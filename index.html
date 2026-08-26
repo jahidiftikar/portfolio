@@ -114,7 +114,18 @@ section{padding:100px 0}
 .panel h3{font-size:1.1rem;margin-bottom:12px}
 .panel p{color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
-.tag{padding:8px 12px;border-radius:999px;background:rgba(105,227,255,.07);border:1px solid rgba(105,227,255,.14);color:#2e5558;font-size:.82rem}
+.tag{
+  padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:650;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.tag:hover{transform:translateY(-2px);box-shadow:0 7px 16px rgba(38,92,94,.12);filter:saturate(1.08)}
+.tag:nth-child(7n+1){background:#e5f7f4;border:1px solid #8ad8cf;color:#126c65}
+.tag:nth-child(7n+2){background:#eaf1fb;border:1px solid #a9c4e5;color:#315f8a}
+.tag:nth-child(7n+3){background:#f0ecfb;border:1px solid #c2b2e6;color:#644b98}
+.tag:nth-child(7n+4){background:#fff1e6;border:1px solid #efc29f;color:#9a541f}
+.tag:nth-child(7n+5){background:#eaf7ea;border:1px solid #acd9ae;color:#32763a}
+.tag:nth-child(7n+6){background:#fbecef;border:1px solid #e7b1bd;color:#963f55}
+.tag:nth-child(7n+7){background:#fff7d9;border:1px solid #e9d274;color:#7b650f}
 .timeline{position:relative;display:grid;gap:20px}
 .timeline:before{content:"";position:absolute;left:12px;top:12px;bottom:12px;width:1px;background:linear-gradient(var(--accent),rgba(139,124,255,.15))}
 .job{position:relative;padding-left:42px}
@@ -309,12 +320,12 @@ footer{padding:35px 0 55px;color:#71839a;font-size:.85rem;text-align:center}
 <section id="achievements">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Highlights</h2>
+      <h2>Achievements</h2>
       <p>Recognition for documentation quality, process improvement and customer-focused learning content.</p>
     </div>
     <div class="achievements">
       <div class="achievement reveal"><div class="num">01</div><p>Received the <strong>Best Performer Award at Landis+Gyr</strong> for timely delivery of documentation for Edge Intelligence and Next-Gen AMI solutions across the APAC region.</p></div>
-      <div class="achievement reveal"><div class="num">02</div><p>Recognized for <strong>revamping documentation processes</strong> across multiple projects through standardized frameworks at Amantya Technologies.</p></div>
+      <div class="achievement reveal"><div class="num">02</div><p>Recognized for <strong>revamping documentation processes</strong> across multiple projects through standardized frameworks at <strong>Amantya Technologies</strong>.</p></div>
       <div class="achievement reveal"><div class="num">03</div><p>Appreciated by NAM customers for creating <strong>interactive eLearning content and training materials</strong> that improved product understanding and learner experience.</p></div>
     </div>
   </div>
@@ -328,16 +339,16 @@ footer{padding:35px 0 55px;color:#71839a;font-size:.85rem;text-align:center}
     </div>
     <div class="skills">
       <div class="skillbox reveal"><h3>Authoring & Documentation</h3><div class="tags">
-        <span class="tag">Adobe FrameMaker</span><span class="tag">MadCap Flare</span><span class="tag">DITA</span><span class="tag">XML</span><span class="tag">Markdown</span><span class="tag">API Docs</span><span class="tag">White Papers</span>
+        <span class="tag">MadCap Flare</span><span class="tag">Adobe FrameMaker</span><span class="tag">RoboHelp</span><span class="tag">DITA</span><span class="tag">XML</span><span class="tag">Markdown</span><span class="tag">API Docs</span><span class="tag">White Papers</span>
       </div></div>
-      <div class="skillbox reveal"><h3>Collaboration & Dev Tools</h3><div class="tags">
+      <div class="skillbox reveal"><h3>Dev Tools</h3><div class="tags">
         <span class="tag">VS Code</span><span class="tag">Confluence</span><span class="tag">Jira</span><span class="tag">Azure DevOps</span><span class="tag">GitLab</span><span class="tag">SourceTree</span><span class="tag">SAP</span>
       </div></div>
-      <div class="skillbox reveal"><h3>Learning & Visual Content</h3><div class="tags">
-        <span class="tag">Camtasia</span><span class="tag">Captivate</span><span class="tag">eLearning</span><span class="tag">Photoshop</span><span class="tag">draw.io</span>
+      <div class="skillbox reveal"><h3>eLearning & Visual Content</h3><div class="tags">
+        <span class="tag">Camtasia</span><span class="tag">Captivate</span><span class="tag">Articulate 360</span><span class="tag">Photoshop</span><span class="tag">draw.io</span>
       </div></div>
       <div class="skillbox reveal"><h3>Languages</h3><div class="tags">
-        <span class="tag">English · Full Professional</span><span class="tag">Hindi · Full Professional</span><span class="tag">Bengali · Native / Bilingual</span>
+        <span class="tag">English · Full Professional</span><span class="tag">Hindi · Full Professional</span><span class="tag">Bengali · Native</span>
       </div></div>
     </div>
   </div>
