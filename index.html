@@ -1,408 +1,411 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Jahid Iftikar — Sr. Technical Writer and Instructional Designer portfolio.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Portfolio of Jahid Iftikar, Technical Writer and Instructional Designer.">
 <title>Jahid Iftikar | Technical Writer & Instructional Designer</title>
+<script>
+(function(){
+  let saved=null;
+  try{
+    saved=window.localStorage.getItem('portfolio-theme');
+  }catch(error){
+    // Sandboxed previews can block localStorage. Continue without persistence.
+  }
+  const preferred=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  document.documentElement.dataset.theme=saved||preferred;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f4fbfa;
-  --bg2:#edf5f4;
-  --card:rgba(255,255,255,.78);
-  --line:rgba(72,108,113,.16);
-  --text:#173638;
-  --muted:#627d80;
-  --accent:#1fb8ae;
-  --accent2:#6f9da0;
-  --green:#37b88d;
-  --shadow:0 24px 70px rgba(38,92,94,.12);
-  --radius:24px;
+:root{--ink:#183238;--muted:#5c7378;--aqua:#64dbc9;--aqua2:#c9f7f0;--ice:#effcfb;--grey:#eef2f3;--white:#fff;--navy:#12343a;--line:rgba(24,50,56,.12);--shadow:0 20px 55px rgba(28,87,88,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink);background:linear-gradient(135deg,#f8ffff 0%,#edf9f8 38%,#f1f3f4 100%);line-height:1.65;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 10%,rgba(100,219,201,.2),transparent 28%),radial-gradient(circle at 90% 30%,rgba(180,205,209,.22),transparent 28%);z-index:-1}a{color:inherit;text-decoration:none}.section-shell{width:min(1180px,calc(100% - 40px));margin:auto}.section-pad{padding:104px 0}.site-header{position:sticky;top:18px;z-index:20;display:flex;align-items:center;justify-content:space-between;width:min(1180px,calc(100% - 40px));margin:18px auto 0;padding:12px 16px;background:rgba(248,255,255,.86);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.92);border-radius:999px;box-shadow:0 12px 34px rgba(28,87,88,.13)}.brand{display:flex;align-items:center;gap:12px;font:800 17px Manrope}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;color:#fff;background:linear-gradient(135deg,#26baa9,#667f86);box-shadow:0 10px 24px rgba(38,186,169,.25);position:relative;isolation:isolate;overflow:hidden}
+.brand-mark::after{content:"";position:absolute;z-index:1;top:-35%;bottom:-35%;left:-75%;width:38%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12) 25%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.12) 75%,transparent);transform:skewX(-18deg);animation:brandMarkShimmer 4.6s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes brandMarkShimmer{0%,58%{left:-75%;opacity:0}62%{opacity:1}78%{left:138%;opacity:1}82%,100%{left:138%;opacity:0}}.site-nav{display:flex;gap:28px;align-items:center;font-weight:600;font-size:14px}.site-nav a:hover{color:#168e82}.nav-cta{padding:10px 17px;border-radius:999px;background:var(--ink);color:#fff!important}.menu-toggle{display:none;border:0;background:none;font-size:24px}.hero{min-height:88vh;display:grid;align-items:center;padding:64px 0 84px}.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}.eyebrow,.kicker{font:700 13px Manrope;text-transform:uppercase;letter-spacing:.16em;color:#158f83}.status-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#23bcae;box-shadow:0 0 0 6px rgba(35,188,174,.14);margin-right:10px;animation:statusDotPulse 1.8s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes statusDotPulse{
+  0%,100%{box-shadow:0 0 0 6px rgba(35,188,174,.14),0 0 0 0 rgba(35,188,174,.38)}
+  65%{box-shadow:0 0 0 6px rgba(35,188,174,.14),0 0 0 13px rgba(35,188,174,0)}
+}.hero h1{font:800 clamp(48px,7vw,88px)/1.02 Manrope;margin:24px 0;letter-spacing:-.055em}.gradient-text{background:linear-gradient(90deg,#158f83,#6d858b);-webkit-background-clip:text;color:transparent}.eyebrow{min-height:1.65em}.role-mask{display:inline-block;white-space:nowrap;clip-path:inset(0 100% 0 0);animation:roleReveal .48s cubic-bezier(.2,.8,.2,1) .12s forwards}@keyframes roleReveal{to{clip-path:inset(0 0 0 0)}}.quote-showcase{position:relative;display:block;height:4.35em;min-height:4.35em;overflow:visible;font-size:clamp(42px,6.15vw,76px)}.quote-text{position:relative;display:block;width:100%;padding-bottom:.12em;margin-bottom:-.12em;background:var(--quote-gradient,linear-gradient(90deg,#102b30 0%,#164e52 48%,#294b52 100%));background-size:180% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:blur(0);transform:translateY(0);opacity:1;transition:opacity .2s ease,transform .3s cubic-bezier(.2,.8,.2,1),filter .3s ease;animation:quoteShimmer 4.8s ease-in-out infinite}.quote-text.is-changing{opacity:0;transform:translateY(12px);filter:blur(5px)}.quote-text:after{content:"";display:inline-block;width:.075em;height:.82em;margin-left:.08em;background:#20a99b;vertical-align:-.05em;animation:quoteCaret .7s step-end infinite}.cursor-glow{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0;background:radial-gradient(circle 260px at var(--cursor-x,50%) var(--cursor-y,50%),rgba(100,219,201,.11) 0%,rgba(38,186,169,.055) 38%,transparent 72%);transition:opacity .35s ease}.cursor-glow.active{opacity:1}@keyframes quoteShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}@keyframes quoteCaret{50%{opacity:0}}.hero-lede{font-size:18px;color:var(--muted);max-width:720px;margin-top:42px}.hero-actions,.contact-actions{display:flex;gap:13px;flex-wrap:wrap;margin:30px 0}.button{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:14px;font-weight:700;transition:.25s}.button:hover{transform:translateY(-3px)}.primary{background:linear-gradient(135deg,#1bb5a5,#456b73);color:white;box-shadow:0 12px 28px rgba(27,181,165,.25)}.secondary{background:rgba(255,255,255,.72);border:1px solid var(--line)}.contact-strip{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.hero-card{position:relative;overflow:hidden;padding:36px;translate:0 -28px;border:1px solid rgba(255,255,255,.7);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(200,245,239,.65));box-shadow:var(--shadow);transform:rotate(1deg)}.hero-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-55px;top:-55px;background:linear-gradient(135deg,#71dfd0,#96aeb3);opacity:.42}.monogram{width:86px;height:86px;display:grid;place-items:center;border-radius:26px;background:var(--ink);color:#fff;font:800 30px Manrope}.card-label{margin:28px 0 8px;color:var(--muted)}.metric{display:flex;align-items:center;gap:18px}.metric strong{font:800 64px Manrope}.domain-row{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0}.domain-row span{padding:7px 11px;border-radius:999px;background:white;font-size:12px;font-weight:700}.card-footer{padding-top:20px;border-top:1px solid var(--line);font-size:13px}.section-heading{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start;margin-bottom:55px}.section-index{font:700 14px Manrope;color:#1aa99b;border-top:2px solid #1aa99b;padding-top:8px}.kicker{font-size:clamp(19px,2vw,25px);margin:0 0 8px}.section-heading h2{font:800 clamp(34px,4.7vw,58px)/1.1 Manrope;letter-spacing:-.04em;margin:0}.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}.large-copy{font:600 clamp(24px,3vw,38px)/1.35 Manrope;margin:0}.capability-cards{display:grid;gap:15px}.capability-cards article,.achievement,.education-card{padding:25px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 30px rgba(48,87,88,.08)}.capability-cards article>span{color:#1aa99b;font-weight:800}.capability-cards h3{font:700 20px Manrope;margin:8px 0}.timeline{--rail-x:10px;--dot-size:14px;position:relative;display:grid;gap:22px;width:100%;margin-inline:auto;padding-left:102px}.timeline:before{content:"";position:absolute;left:var(--rail-x);top:52px;bottom:52px;width:1px;background:linear-gradient(180deg,rgba(26,169,155,.2),rgba(26,169,155,.75) 12%,rgba(26,169,155,.75) 88%,rgba(26,169,155,.2));transform:translateX(-50%)}.timeline-item{position:relative;display:block;padding:30px 36px 28px 62px;border-radius:28px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.94);box-shadow:0 14px 36px rgba(48,87,88,.09);transition:.25s}.timeline-item:before{content:"";position:absolute;left:calc(var(--rail-x) - 102px);top:52px;width:var(--dot-size);height:var(--dot-size);border-radius:50%;background:#20aa9e;box-shadow:0 0 0 7px rgba(32,170,158,.13),0 4px 12px rgba(18,52,58,.14);transform:translate(-50%,-50%);z-index:1}.timeline-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.timeline-meta{display:none}.role-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.role-top h3{font:800 30px/1.15 Manrope;margin:0;color:var(--ink)}.role-top p{margin:4px 0 0;color:#0d988c;font-size:16px;font-weight:700}.industry{flex:0 0 auto;height:max-content;margin-top:5px;padding:10px 15px;border-radius:999px;background:#ddf8f4;color:var(--ink);font-size:12px;font-weight:700}.timeline-body ul{max-width:930px;margin:22px auto 0;padding-left:22px;color:var(--muted);font-size:17px;line-height:1.65}.timeline-body li{padding-left:4px}.impact-section{background:linear-gradient(140deg,#163a40,#29636a 55%,#48a79d);color:white}.section-heading.light .kicker,.section-heading.light .section-index{color:#8af2e2;border-color:#8af2e2}.achievement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.achievement{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.16);backdrop-filter:blur(10px)}.achievement-no{color:#8af2e2;font-weight:800}.achievement h3{font:800 22px Manrope}.achievement p{color:#d9ebec}.skills-cloud{display:flex;gap:12px;flex-wrap:wrap}.skills-cloud span{--chip:#1aa99b;position:relative;padding:12px 17px 12px 33px;border-radius:999px;background:rgba(255,255,255,.9);border:1px solid color-mix(in srgb,var(--chip) 35%,white);font-weight:700;box-shadow:0 8px 18px rgba(40,80,82,.07);transition:.2s}.skills-cloud span:before{content:"";position:absolute;left:14px;top:50%;width:9px;height:9px;border-radius:50%;background:var(--chip);transform:translateY(-50%);box-shadow:0 0 0 4px color-mix(in srgb,var(--chip) 16%,transparent)}.skills-cloud span:hover{transform:translateY(-3px)}.skills-cloud span:nth-child(6n+1){--chip:#e45f72}.skills-cloud span:nth-child(6n+2){--chip:#7656cf}.skills-cloud span:nth-child(6n+3){--chip:#e39b25}.skills-cloud span:nth-child(6n+4){--chip:#1f9e89}.skills-cloud span:nth-child(6n+5){--chip:#3788d8}.skills-cloud span:nth-child(6n){--chip:#8b9f3d}.language-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:45px}.language-grid div{padding:18px;border-top:2px solid #71cec3}.language-grid p{font-weight:800;margin:0}.language-grid span{color:var(--muted);font-size:13px}.contact-section{padding:90px 0;background:linear-gradient(120deg,#d8f8f3,#e7ebed)}.contact-inner h2{font:800 clamp(38px,6vw,70px)/1.05 Manrope;letter-spacing:-.04em;margin:10px 0}.bright{background:#fff}.contact-actions .bright{height:42px;padding:0 20px;background:rgba(255,255,255,.58);transition:transform .25s ease,background .25s ease,box-shadow .25s ease}.contact-actions .bright:hover{transform:translateY(-2px);background:#fff;box-shadow:0 11px 24px rgba(28,87,88,.13)}.text-link{align-self:center;font-weight:700}.contact-actions{align-items:center;gap:18px}.contact-icon-link{display:inline-grid;place-items:center;align-self:center;width:42px;height:42px;padding:0;border:0;border-radius:12px;background:rgba(255,255,255,.58);color:var(--ink);box-shadow:0 8px 20px rgba(28,87,88,.08);transition:transform .25s ease,background .25s ease,box-shadow .25s ease}.contact-icon-link svg{width:19px;height:19px;fill:currentColor}.contact-icon-link:hover{transform:translateY(-2px);background:#fff;box-shadow:0 11px 24px rgba(28,87,88,.13)}.phone-link{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-size:16px;transition:transform .28s cubic-bezier(.22,1,.36,1),color .28s ease}.phone-link:hover{transform:translateY(-1px);color:#176f69}.phone-link svg{width:18px;height:18px;fill:currentColor;flex:0 0 auto;opacity:.86;transition:opacity .28s ease}.phone-link:hover svg{opacity:1}html[data-theme="dark"] .contact-icon-link{background:rgba(255,255,255,.08);color:var(--ink);box-shadow:0 8px 20px rgba(0,0,0,.18)}html[data-theme="dark"] .contact-icon-link:hover{background:rgba(255,255,255,.13)}.nav-cta{transition:transform .18s cubic-bezier(.22,1,.36,1),background-color .2s ease,color .2s ease,box-shadow .2s ease}.nav-cta.contact-click{animation:contactPress .36s cubic-bezier(.22,1,.36,1)}@keyframes contactPress{0%,100%{transform:translateY(0) scale(1);background-color:var(--ink);box-shadow:none}42%{transform:translateY(1px) scale(.982);background-color:#1a8f85;box-shadow:inset 0 1px 3px rgba(0,0,0,.10)}72%{transform:translateY(0) scale(.994);background-color:#167f77;box-shadow:0 5px 14px rgba(26,143,133,.12)}}html[data-theme="dark"] .nav-cta.contact-click{animation-name:contactPressDark}@keyframes contactPressDark{0%,100%{transform:translateY(0) scale(1);background-color:#d9f5f1;box-shadow:none}42%{transform:translateY(1px) scale(.982);background-color:#8be7da;box-shadow:inset 0 1px 3px rgba(16,42,46,.12)}72%{transform:translateY(0) scale(.994);background-color:#b7eee6;box-shadow:0 5px 14px rgba(139,231,218,.12)}}.footer{display:flex;justify-content:space-between;padding:25px 0;color:var(--muted);font-size:13px}.reveal{opacity:0;transform:translateY(24px);transition:.7s ease}.reveal.visible{opacity:1;transform:none}
+
+/* Official company logos in the Experience section */
+.company-logo-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  width:220px;
+  height:48px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+  transition:transform .28s ease;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 12% 8%,rgba(31,184,174,.12),transparent 24%),
-    radial-gradient(circle at 88% 18%,rgba(111,157,160,.12),transparent 22%),
-    linear-gradient(180deg,var(--bg),#f8fcfb 100%);
-  line-height:1.65;
-  overflow-x:hidden;
-  position:relative;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  background:radial-gradient(260px circle at var(--mx,50%) var(--my,30%),rgba(31,184,174,.10),transparent 68%);
-  transition:background .18s ease;
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(1160px,92%);margin:auto}
-header{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  background:rgba(224,244,242,.88);backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(31,184,174,.18);
-  box-shadow:0 8px 24px rgba(47,103,105,.06)
-}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:800;letter-spacing:.04em}
-.brand span{color:var(--accent)}
-nav{display:flex;gap:28px;color:#557275;font-size:.92rem}
-nav a:hover{color:var(--accent)}
-.hero{min-height:100vh;padding:160px 0 90px;display:grid;align-items:center}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem}
-.eyebrow:before{content:"";width:28px;height:1px;background:var(--accent)}
-h1{font-size:clamp(3.5rem,8vw,6.4rem);line-height:.95;letter-spacing:-.055em;margin:22px 0}
-.gradient{background:linear-gradient(100deg,#23494b 10%,var(--accent) 55%,#6f9da0 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.typing{
+.company-logo{
   display:block;
-  width:100%;
-  min-width:0;
-  min-height:1.9em;
-  border-right:2px solid var(--accent);
-  padding-right:5px;
-  animation:blink .8s step-end infinite;
+  width:200px;
+  height:40px;
+  max-width:100%;
+  object-fit:contain;
+  object-position:left center;
+  background:transparent;
 }
-@keyframes blink{50%{border-color:transparent}}
-.hero p{max-width:680px;color:var(--muted);font-size:1.08rem}
-.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-.btn{padding:13px 19px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);font-weight:700;transition:.25s}
-.btn.primary{background:linear-gradient(110deg,var(--accent),#8eb9ff);color:#06101c;border:none}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(105,227,255,.12)}
-.profile{
-  position:relative;min-height:440px;border-radius:32px;padding:28px;display:flex;align-items:flex-end;
-  background:
-    linear-gradient(145deg,rgba(31,184,174,.12),rgba(111,157,160,.11)),
-    repeating-linear-gradient(135deg,transparent 0 16px,rgba(31,184,174,.025) 16px 17px);
-  border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden
+.company-logo.logo-tall{height:40px}
+.company-logo.logo-compact{width:120px;height:24px}
+.company-logo.logo-umlaut{width:100px;height:20px}
+/* Refined Experience hierarchy: compact company fallback and lighter role labels */
+.company-logo-fallback{
+  display:none;
+  font:700 16px/1.2 Manrope;
+  letter-spacing:-.01em;
+  color:var(--ink);
 }
-.profile:before,.profile:after{content:"";position:absolute;border-radius:50%;filter:blur(3px)}
-.profile:before{width:250px;height:250px;background:rgba(105,227,255,.18);right:-90px;top:-90px}
-.profile:after{width:220px;height:220px;background:rgba(139,124,255,.16);left:-90px;bottom:-90px}
-.avatar{
-  width:145px;height:145px;border-radius:38px;display:grid;place-items:center;
-  border:1px solid rgba(255,255,255,.18);
-  background:linear-gradient(145deg,#c8f2ed,#7fd6cf);
-  color:#17464a;
-  font-size:4rem;font-weight:900;
-  letter-spacing:-.08em;
-  text-shadow:0 1px 0 rgba(255,255,255,.45);
-  box-shadow:0 20px 60px rgba(31,184,174,.20)
+.company-logo-wrap[title="umlaut"] .company-logo-fallback{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:0;
 }
-.card{position:relative;z-index:1;width:100%;padding:22px;border-radius:22px;background:rgba(255,255,255,.76);border:1px solid var(--line);backdrop-filter:blur(10px)}
-.card small{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
-.stat{padding:16px;border-radius:16px;background:rgba(255,255,255,.68);border:1px solid var(--line)}
-.stat strong{display:block;font-size:1.55rem}
-.stat:nth-child(1) strong{color:#169b91}
-.stat:nth-child(2) strong{color:#547f98}
-.stat:nth-child(3) strong{color:#7d6bb2}
-.stat span{font-size:.76rem;color:var(--muted)}
-section{padding:100px 0}
-.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:36px}
-.section-head h2{font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.04em}
-.section-head p{max-width:550px;color:var(--muted)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.panel{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);transition:.3s ease}
-.panel:hover{background:rgba(235,251,249,.96);transform:translateY(-4px);border-color:rgba(31,184,174,.28)}
-.panel h3{font-size:1.1rem;margin-bottom:12px}
-.panel p{color:var(--muted)}
-.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
-.tag{
-  padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:650;
-  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+.role-top > div > p{
+  margin:-6px 0 0;
+  color:#3d8f89;
+  font:500 13px/1.35 "DM Sans",sans-serif;
+  letter-spacing:.015em;
 }
-.tag:hover{transform:translateY(-2px);box-shadow:0 7px 16px rgba(38,92,94,.12);filter:saturate(1.08)}
-.tag:nth-child(7n+1){background:#e5f7f4;border:1px solid #8ad8cf;color:#126c65}
-.tag:nth-child(7n+2){background:#eaf1fb;border:1px solid #a9c4e5;color:#315f8a}
-.tag:nth-child(7n+3){background:#f0ecfb;border:1px solid #c2b2e6;color:#644b98}
-.tag:nth-child(7n+4){background:#fff1e6;border:1px solid #efc29f;color:#9a541f}
-.tag:nth-child(7n+5){background:#eaf7ea;border:1px solid #acd9ae;color:#32763a}
-.tag:nth-child(7n+6){background:#fbecef;border:1px solid #e7b1bd;color:#963f55}
-.tag:nth-child(7n+7){background:#fff7d9;border:1px solid #e9d274;color:#7b650f}
-.timeline{position:relative;display:grid;gap:20px}
-.timeline:before{content:"";position:absolute;left:12px;top:12px;bottom:12px;width:1px;background:linear-gradient(var(--accent),rgba(139,124,255,.15))}
-.job{position:relative;padding-left:42px}
-.dot{position:absolute;left:6px;top:24px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(105,227,255,.08)}
-.job-card{padding:24px;border:1px solid var(--line);background:var(--card);border-radius:22px;transition:.25s}
-.job-card:hover{transform:translateY(-3px);border-color:rgba(105,227,255,.28)}
-.job-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
-.job h3{font-size:1.2rem}
-.role{color:var(--accent);font-weight:700;margin-top:2px}
-.date{color:#799294;font-size:.85rem;white-space:nowrap}
-.job ul{margin:16px 0 0 18px;color:var(--muted)}
-.job li{margin:8px 0}
-.achievements{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.achievement{padding:26px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(31,184,174,.035));transition:.3s ease}
-.achievement:hover{background:rgba(231,249,247,.96);transform:translateY(-5px);box-shadow:0 18px 40px rgba(46,106,107,.12)}
-.achievement .num{font-size:2rem;color:var(--accent);font-weight:900}
-.achievement p{margin-top:14px;color:var(--muted)}
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.skillbox{padding:24px;border-radius:22px;background:var(--card);border:1px solid var(--line);transition:.3s ease}
-.skillbox:hover{background:rgba(231,249,247,.96);transform:translateY(-4px)}
-.skillbox h3{margin-bottom:15px}
-.contact{
-  padding:55px;border-radius:32px;border:1px solid var(--line);
-  background:linear-gradient(120deg,rgba(105,227,255,.12),rgba(139,124,255,.10));
-  text-align:center
+.timeline-item:hover .company-logo-wrap,
+.timeline-item:focus-visible .company-logo-wrap{
+  transform:translateX(4px);
+  border:0;
+  box-shadow:none;
 }
-.contact h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:12px}
-.contact p{color:var(--muted);max-width:650px;margin:0 auto 28px}
-footer{padding:35px 0 55px;color:#71839a;font-size:.85rem;text-align:center}
-.mobile-note{display:none}
-@media(max-width:900px){
-  .hero-grid,.about-grid,.skills{grid-template-columns:1fr}
-  .hero{padding-top:130px}
-  .profile{min-height:350px}
-  .achievements{grid-template-columns:1fr}
-  nav{display:none}
+html[data-theme="dark"] .role-top > div > p{color:#80bbb5}
+html[data-theme="dark"] .company-logo-wrap{
+  background:transparent;
+  border:0;
 }
-@media(max-width:560px){
-  h1{font-size:3.35rem}
-  .stats{grid-template-columns:1fr}
-  .job-top{flex-direction:column}
-  .date{white-space:normal}
-  .contact{padding:35px 22px}
-  section{padding:72px 0}
+@media(max-width:800px){
+  .company-logo-wrap{width:200px;height:44px}
+  .company-logo{width:180px;height:36px}
+  .company-logo.logo-tall{height:36px}
+  .company-logo.logo-compact{width:110px;height:22px}
+  .company-logo.logo-umlaut{width:92px;height:18px}
+  .role-top > div > p{margin:-5px 0 0;font-size:12.5px}
+  .company-logo-wrap[title="umlaut"] .company-logo-fallback{font-size:17px;font-weight:800}
 }
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .timeline-item:hover .company-logo-wrap,
+  .timeline-item:focus-visible .company-logo-wrap{transform:none}
+}
+
+/* Professional hover interaction: Experience cards */
+.timeline-item{
+  isolation:isolate;
+  overflow:visible;
+  transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s ease,border-color .34s ease,background .34s ease;
+}
+.timeline-item .timeline-body,
+.timeline-item .role-top,
+.timeline-item .timeline-body ul{position:relative;z-index:1}
+.timeline-item .role-top h3,
+.timeline-item .role-top p,
+.timeline-item .industry,
+.timeline-item .timeline-body li{
+  transition:color .28s ease,transform .34s cubic-bezier(.2,.8,.2,1),background .28s ease,box-shadow .28s ease;
+}
+.timeline-item:hover,
+.timeline-item:focus-visible{
+  transform:translateY(-7px);
+  background:linear-gradient(118deg,rgba(255,255,255,.96),rgba(223,249,245,.9) 58%,rgba(235,242,244,.9));
+  border-color:rgba(35,188,174,.5);
+  box-shadow:0 22px 48px rgba(28,111,107,.18),0 0 0 1px rgba(100,219,201,.13);
+  outline:none;
+}
+.timeline-item:hover .role-top h3,
+.timeline-item:focus-visible .role-top h3{
+  color:#117f76;
+  transform:translateX(7px);
+}
+.timeline-item:hover .role-top p,
+.timeline-item:focus-visible .role-top p{
+  color:#247f79;
+  transform:translateX(4px);
+}
+.timeline-item:hover .industry,
+.timeline-item:focus-visible .industry{
+  color:#103d42;
+  background:#bff2ea;
+  box-shadow:0 8px 18px rgba(26,169,155,.16);
+  transform:translateY(-2px);
+}
+.timeline-item:hover .timeline-body li,
+.timeline-item:focus-visible .timeline-body li{color:#425f64}
+.timeline-item:hover:before,
+.timeline-item:focus-visible:before{
+  background:#137f76;
+  box-shadow:0 0 0 10px rgba(32,170,158,.16),0 6px 16px rgba(18,52,58,.2);
+  /* Counter the card lift so the node stays centered on the fixed rail. */
+  transform:translate(-50%,calc(-50% + 7px)) scale(1.12);
+}
+html[data-theme="dark"] .timeline-item:hover,
+html[data-theme="dark"] .timeline-item:focus-visible{
+  background:linear-gradient(118deg,rgba(21,67,68,.97),rgba(17,51,56,.96) 62%,rgba(22,43,49,.96));
+  border-color:rgba(121,229,215,.42);
+  box-shadow:0 24px 50px rgba(0,0,0,.38),0 0 0 1px rgba(139,231,218,.1);
+}
+html[data-theme="dark"] .timeline-item:hover .role-top h3,
+html[data-theme="dark"] .timeline-item:focus-visible .role-top h3{color:#a9f6eb}
+html[data-theme="dark"] .timeline-item:hover .role-top p,
+html[data-theme="dark"] .timeline-item:focus-visible .role-top p{color:#79e5d7}
+html[data-theme="dark"] .timeline-item:hover .industry,
+html[data-theme="dark"] .timeline-item:focus-visible .industry{color:#dffbf7;background:#1a6962}
+html[data-theme="dark"] .timeline-item:hover .timeline-body li,
+html[data-theme="dark"] .timeline-item:focus-visible .timeline-body li{color:#c3d9da}
+@media(hover:none){.timeline-item:hover{transform:none}}
+
+/* Professional hover interaction: Profile capability cards and Key achievements */
+.capability-cards article,.achievement{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease,border-color .32s ease,background .32s ease;
+}
+.capability-cards article::before,.achievement::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:linear-gradient(120deg,rgba(100,219,201,.18),rgba(31,158,137,.06) 52%,transparent 78%);
+  opacity:0;
+  transform:translateX(-28%);
+  transition:opacity .32s ease,transform .48s cubic-bezier(.2,.8,.2,1);
+}
+.capability-cards article::after,.achievement::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:18%;
+  bottom:18%;
+  width:4px;
+  border-radius:0 5px 5px 0;
+  background:linear-gradient(180deg,#64dbc9,#168e82);
+  opacity:0;
+  transform:scaleY(.25);
+  transition:opacity .28s ease,transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.capability-cards article:hover,.capability-cards article:focus-visible,
+.achievement:hover,.achievement:focus-visible{
+  transform:translateY(-7px) scale(1.012);
+  border-color:rgba(35,188,174,.48);
+  box-shadow:0 20px 42px rgba(28,111,107,.17),0 0 0 1px rgba(100,219,201,.12);
+  outline:none;
+}
+.capability-cards article:hover::before,.capability-cards article:focus-visible::before,
+.achievement:hover::before,.achievement:focus-visible::before{
+  opacity:1;
+  transform:translateX(0);
+}
+.capability-cards article:hover::after,.capability-cards article:focus-visible::after,
+.achievement:hover::after,.achievement:focus-visible::after{
+  opacity:1;
+  transform:scaleY(1);
+}
+.capability-cards article h3,.achievement h3,
+.capability-cards article > span,.achievement-no{
+  transition:color .28s ease,transform .32s cubic-bezier(.2,.8,.2,1);
+}
+.capability-cards article:hover h3,.capability-cards article:focus-visible h3,
+.achievement:hover h3,.achievement:focus-visible h3{
+  color:#117f76;
+  transform:translateX(5px);
+}
+.capability-cards article:hover > span,.capability-cards article:focus-visible > span,
+.achievement:hover .achievement-no,.achievement:focus-visible .achievement-no{
+  color:#0c8f84;
+  transform:translateX(5px);
+}
+/* The achievement section uses a dark background, so keep its hover text bright. */
+.achievement:hover,.achievement:focus-visible{
+  background:rgba(255,255,255,.16);
+  border-color:rgba(138,242,226,.55);
+  box-shadow:0 22px 46px rgba(5,30,33,.28),0 0 0 1px rgba(138,242,226,.12);
+}
+.achievement:hover h3,.achievement:focus-visible h3{color:#b8fff5}
+.achievement:hover .achievement-no,.achievement:focus-visible .achievement-no{color:#ffffff}
+html[data-theme="dark"] .capability-cards article:hover,
+html[data-theme="dark"] .capability-cards article:focus-visible{
+  background:linear-gradient(135deg,rgba(20,61,63,.96),rgba(17,47,52,.94));
+  border-color:rgba(139,231,218,.38);
+  box-shadow:0 22px 46px rgba(0,0,0,.34),0 0 0 1px rgba(139,231,218,.1);
+}
+html[data-theme="dark"] .capability-cards article:hover h3,
+html[data-theme="dark"] .capability-cards article:focus-visible h3{color:#a9f6eb}
+html[data-theme="dark"] .capability-cards article:hover > span,
+html[data-theme="dark"] .capability-cards article:focus-visible > span{color:#79e5d7}
+@media(hover:none){
+  .capability-cards article:hover,.achievement:hover{transform:none}
+}
+
+
+/* Interactive industry chips in the Professional snapshot */
+.domain-row span{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  cursor:default;
+  border:1px solid rgba(26,169,155,.10);
+  box-shadow:0 5px 14px rgba(28,87,88,.06);
+  transition:color .24s ease,background .24s ease,border-color .24s ease,
+             transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease;
+}
+.domain-row span::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-2px;
+  border-radius:inherit;
+  background:linear-gradient(120deg,#1aa99b,#456b73);
+  transform:translateX(-104%);
+  transition:transform .32s ease;
+}
+.domain-row span:hover{
+  color:#fff;
+  border-color:transparent;
+  transform:translateY(-2px);
+  box-shadow:0 7px 16px rgba(26,169,155,.14);
+}
+.domain-row span:hover::before{transform:translateX(0)}
+.domain-row span:nth-child(2)::before{background:linear-gradient(120deg,#456b73,#1aa99b)}
+.domain-row span:nth-child(3)::before{background:linear-gradient(120deg,#168e82,#294b52)}
+html[data-theme="dark"] .domain-row span:hover{
+  color:#08292c;
+  border-color:rgba(139,231,218,.55);
+  box-shadow:0 7px 16px rgba(0,0,0,.24),0 0 0 1px rgba(139,231,218,.10);
+}
+html[data-theme="dark"] .domain-row span::before{
+  background:linear-gradient(120deg,#79e5d7,#b8fff5);
+}
+html[data-theme="dark"] .domain-row span:nth-child(2)::before{
+  background:linear-gradient(120deg,#9fc8ff,#79e5d7);
+}
+html[data-theme="dark"] .domain-row span:nth-child(3)::before{
+  background:linear-gradient(120deg,#8be7da,#d8fffa);
+}
+@media(hover:none){.domain-row span:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.domain-row span:hover{transform:none}}
+
+/* Theme switch */
+:root{color-scheme:light dark;--page-bg:linear-gradient(135deg,#f8ffff 0%,#edf9f8 38%,#f1f3f4 100%);--surface:rgba(255,255,255,.78);--surface-strong:#fff;--header-bg:rgba(248,255,255,.86);--soft-border:rgba(255,255,255,.92)}
+html[data-theme="dark"]{--ink:#e8f7f5;--muted:#a9c0c2;--ice:#102a2e;--grey:#182c30;--white:#132c31;--navy:#e3f7f4;--line:rgba(176,227,220,.16);--shadow:0 20px 55px rgba(0,0,0,.34);--page-bg:linear-gradient(135deg,#07171a 0%,#0b2427 42%,#111d22 100%);--surface:rgba(17,43,47,.84);--surface-strong:#132f34;--header-bg:rgba(9,29,32,.86);--soft-border:rgba(159,225,216,.13)}
+body{background:var(--page-bg);transition:background .4s ease,color .3s ease}
+body:before{transition:background .4s ease}
+html[data-theme="dark"] body:before{background:radial-gradient(circle at 10% 10%,rgba(64,201,184,.13),transparent 28%),radial-gradient(circle at 90% 30%,rgba(58,103,112,.2),transparent 30%)}
+.site-header{background:var(--header-bg);border-color:var(--soft-border);transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.theme-dock{position:fixed;z-index:19;top:112px;right:max(24px,calc((100vw - 1180px)/2));display:flex;align-items:center;gap:10px}
+.theme-label{padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:700;box-shadow:0 9px 24px rgba(28,87,88,.1);backdrop-filter:blur(14px);opacity:0;transform:translateX(8px);pointer-events:none;transition:.25s}
+.theme-toggle{position:relative;width:62px;height:34px;padding:3px;border:1px solid rgba(24,50,56,.12);border-radius:999px;background:#F6FEFE;box-shadow:0 10px 26px rgba(28,87,88,.18),inset 0 1px 0 rgba(255,255,255,.85);cursor:pointer;transition:.35s;overflow:hidden}
+.theme-toggle:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(28,87,88,.24)}
+.theme-toggle:focus-visible{outline:3px solid rgba(26,169,155,.3);outline-offset:3px}
+.theme-toggle-track{position:relative;display:block;width:100%;height:100%}
+.theme-icon{position:absolute;top:50%;display:grid;place-items:center;width:22px;height:22px;transform:translateY(-50%);font-size:14px;line-height:1;transition:.35s}
+.theme-icon.sun{left:3px;color:#17474b}.theme-icon.moon{right:3px;color:#638086}
+.theme-thumb{position:absolute;z-index:2;left:2px;top:2px;width:24px;height:24px;border-radius:50%;background:linear-gradient(145deg,#21b9aa,#54757b);box-shadow:0 5px 12px rgba(13,65,67,.28);transition:transform .38s cubic-bezier(.2,.8,.2,1),background .35s}
+.theme-dock:hover .theme-label,.theme-toggle:focus-visible+.theme-label{opacity:1;transform:none}
+html[data-theme="dark"] .theme-toggle{background:linear-gradient(135deg,#16383e,#0b2025);border-color:rgba(141,222,211,.2);box-shadow:0 10px 28px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.07)}
+html[data-theme="dark"] .theme-thumb{transform:translateX(28px);background:linear-gradient(145deg,#8be7da,#4d8891)}
+html[data-theme="dark"] .theme-icon.sun{color:#6f8d91}html[data-theme="dark"] .theme-icon.moon{color:#d8fffa}
+/* Improve rotating quote contrast in dark mode. The !important rule overrides the inline gradient set by JavaScript. */
+html[data-theme="dark"] .quote-text{
+  --quote-gradient:linear-gradient(90deg,#e8f7f5 0%,#8be7da 34%,#9fc8ff 68%,#d8fffa 100%)!important;
+}
+html[data-theme="dark"] .hero-card{background:linear-gradient(145deg,rgba(20,54,59,.94),rgba(19,80,76,.67));border-color:rgba(152,226,216,.13)}
+html[data-theme="dark"] .hero-card:after{opacity:.2}
+html[data-theme="dark"] .monogram{background:linear-gradient(145deg,#20ad9f,#315f67);color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.18);text-shadow:0 1px 2px rgba(0,0,0,.18)}
+html[data-theme="dark"] .capability-cards article,html[data-theme="dark"] .timeline-item{background:var(--surface);border-color:var(--soft-border)}
+html[data-theme="dark"] .domain-row span,html[data-theme="dark"] .skills-cloud span{background:#16363a;color:#dff8f5}
+html[data-theme="dark"] .secondary,html[data-theme="dark"] .bright{background:rgba(20,52,57,.9);border-color:var(--line);color:var(--ink)}html[data-theme="dark"] .contact-actions .bright{background:rgba(255,255,255,.08);border-color:transparent}html[data-theme="dark"] .contact-actions .bright:hover{background:rgba(255,255,255,.13);box-shadow:0 11px 24px rgba(0,0,0,.22)}html[data-theme="dark"] .phone-link:hover{color:#b7eee6}
+html[data-theme="dark"] .industry{background:#16433f;color:#c8f8f1}
+html[data-theme="dark"] .contact-section{background:linear-gradient(120deg,#102f33,#1a3036)}
+html[data-theme="dark"] .site-nav a:hover{color:#72ded0}
+html[data-theme="dark"] .nav-cta{background:#d9f5f1;color:#102a2e!important}
+html[data-theme="dark"] .site-nav.open{background:#102b30}
+@media(max-width:800px){.theme-dock{top:92px;right:16px}.theme-label{display:none}.theme-toggle{width:58px;height:32px}html[data-theme="dark"] .theme-thumb{transform:translateX(24px)}}
+@media(max-width:800px){.site-header{top:12px;width:calc(100% - 24px);margin-top:12px}.site-nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:22px;background:#fff;border-radius:18px;box-shadow:var(--shadow)}.site-nav.open{display:flex}.menu-toggle{display:block}.hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:55px}.quote-showcase{height:6.35em;min-height:6.35em}.hero-lede{margin-top:32px}.hero-card{transform:none;translate:0}.timeline{--rail-x:8px;width:100%;padding-left:30px}.timeline-item{padding:24px}.timeline-item:before{left:calc(var(--rail-x) - 30px);top:38px}.role-top h3{font-size:24px}.timeline-body ul{font-size:15px;margin-top:18px}.achievement-grid,.language-grid{grid-template-columns:1fr}.role-top{flex-direction:column}.section-heading{grid-template-columns:45px 1fr}.section-pad{padding:75px 0}.contact-strip{flex-direction:column}.footer{flex-direction:column}}
+@media(pointer:coarse){.cursor-glow{display:none}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.brand-mark::after{display:none}.status-dot{animation:none}.role-mask{clip-path:none;animation:none}.quote-text{animation:none}.quote-text:after{display:none}.cursor-glow{display:none}}
 </style>
 </head>
-<body>
-<header>
-  <div class="container nav">
-    <div class="brand">JAHID<span>.</span></div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
+<body id="top">
+<div class="cursor-glow" aria-hidden="true"></div>
+<div class="theme-dock">
+  <span class="theme-label" id="theme-label">Switch to dark mode</span>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-describedby="theme-label" title="Switch to dark mode">
+    <span class="theme-toggle-track" aria-hidden="true">
+      <span class="theme-icon sun">☀</span><span class="theme-icon moon">☾</span><span class="theme-thumb"></span>
+    </span>
+  </button>
+</div>
+<header class="site-header"><a class="brand" href="#top"><span class="brand-mark">JI</span><span>Jahid Iftikar</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰</button><nav id="site-nav" class="site-nav"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#impact">Impact</a><a href="#skills">Toolkit</a><a class="nav-cta" href="#contact">Contact</a></nav></header>
 <main>
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="reveal">
-      <div class="eyebrow">Technical Writer · Instructional Designer</div>
-      <h1>Turning complex systems into<br><span class="gradient typing" id="typing"></span></h1>
-      <p>Analytical and detail-oriented Technical Writer with 8+ years of experience creating technical documentation for software systems, products, and application user interfaces across telecom, automobile, and energy domains.</p>
-      <div class="cta">
-        <a class="btn primary" href="#experience">Explore my work</a>
-        <a class="btn" href="mailto:jahid.iftikar@gmail.com">Get in touch</a>
-        <a class="btn" href="https://linkedin.com/in/jahidiftikar" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
-    </div>
-    <div class="profile reveal">
-      <div class="card">
-        <div class="avatar">JI</div>
-        <div style="margin-top:18px">
-          <small>Gurugram · India</small>
-          <h2 style="margin-top:6px;font-size:1.65rem">Jahid Iftikar</h2>
-          <p style="color:var(--muted);margin-top:5px">Documentation · Information Architecture · eLearning</p>
-        </div>
-        <div class="stats">
-          <div class="stat"><strong>8+</strong><span>Years experience</span></div>
-          <div class="stat"><strong>4</strong><span>Organizations</span></div>
-          <div class="stat"><strong>3</strong><span>Industry domains</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2>About Me</h2>
-      <p>I bridge engineering knowledge and human understanding—working with SMEs, developers, QA teams and customers to produce documentation that is accurate, structured and useful.</p>
-    </div>
-    <div class="about-grid">
-      <div class="panel reveal">
-        <h3>What I do</h3>
-        <p>Requirement analysis, topic-based authoring, online help development, technical guides, installation and user documentation, release content, whitepapers, and interactive learning materials.</p>
-        <div class="tags">
-          <span class="tag">Technical Documentation</span><span class="tag">Topic-based Authoring</span>
-          <span class="tag">Online Help</span><span class="tag">MSTP Style Guide</span>
-          <span class="tag">eLearning</span><span class="tag">Content QA</span>
-        </div>
-      </div>
-      <div class="panel reveal">
-        <h3>Industry experience</h3>
-        <p>Experience spans smart metering and energy solutions, 5G telecom systems, AI/ML-driven network products, and automotive infotainment systems.</p>
-        <div class="tags">
-          <span class="tag">Energy & Smart Metering</span><span class="tag">Telecom & 5G</span>
-          <span class="tag">Automotive</span><span class="tag">AI / ML Products</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2>Career Journey</h2>
-      <p>Progressing from engineering documentation and automotive systems into telecom, 5G, smart metering and digital learning.</p>
-    </div>
-    <div class="timeline">
-      <article class="job reveal">
-        <div class="dot"></div>
-        <div class="job-card">
-          <div class="job-top">
-            <div><h3>Landis+Gyr</h3><div class="role">Sr. Technical Writer</div></div>
-            <div class="date">Nov 2023 — Present · Noida</div>
-          </div>
-          <ul>
-            <li>Created Installation and User Guides for smart metering solutions and backend infrastructure for TEPCO, a Japanese client, using Adobe Structured FrameMaker.</li>
-            <li>Documented HES migration from on-premises infrastructure to Google Cloud Platform (GCP), including deployment and operational workflows.</li>
-            <li>Delivered knowledge-transfer sessions on Azure DevOps and managed ad-hoc MDMS documentation updates.</li>
-            <li>Developed storyboards and eLearning content with Captivate and Camtasia, then published content on Docebo.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="job reveal">
-        <div class="dot"></div>
-        <div class="job-card">
-          <div class="job-top">
-            <div><h3>Amantya Technologies</h3><div class="role">Sr. Technical Writer</div></div>
-            <div class="date">Sep 2022 — Nov 2023 · Gurugram</div>
-          </div>
-          <ul>
-            <li>Managed documentation for 5G network components and Linux-based deployment platforms for Verizon using Markdown.</li>
-            <li>Created whitepapers and technical guides for Network-in-a-Box and Test Automation Framework products.</li>
-            <li>Collaborated with QA and development teams to validate technical accuracy and alignment.</li>
-            <li>Supported pre-sales and business development with B2B proposals, RFIs and RFPs.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="job reveal">
-        <div class="dot"></div>
-        <div class="job-card">
-          <div class="job-top">
-            <div><h3>Guavus, a Thales Company</h3><div class="role">Sr. Technical Writer</div></div>
-            <div class="date">Mar 2022 — Sep 2022 · Gurugram</div>
-          </div>
-          <ul>
-            <li>Created documentation for AI/ML-driven telecom products including Service-IQ Device Management Analytics and NWDAF.</li>
-            <li>Enhanced SQLstream documentation and improved HTML output through MadCap Flare CSS.</li>
-            <li>Used MadCap Flare, Zendesk and GitLab across authoring, publishing and version-control workflows.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="job reveal">
-        <div class="dot"></div>
-        <div class="job-card">
-          <div class="job-top">
-            <div><h3>Umlaut Pvt. Ltd. · Group of Accenture</h3><div class="role">Technical Author</div></div>
-            <div class="date">Oct 2018 — Mar 2022 · Bengaluru</div>
-          </div>
-          <ul>
-            <li>Created Operation and Repair Manuals for automotive infotainment systems using Arbortext Editor at client locations.</li>
-            <li>Worked with SMEs, specification sheets, technical drawings and Bills of Materials to build engineering artifacts.</li>
-            <li>Performed proofreading and quality reviews to maintain accuracy, consistency and standards compliance.</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="achievements">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2>Achievements</h2>
-      <p>Recognition for documentation quality, process improvement and customer-focused learning content.</p>
-    </div>
-    <div class="achievements">
-      <div class="achievement reveal"><div class="num">01</div><p>Received the <strong>Best Performer Award at Landis+Gyr</strong> for timely delivery of documentation for Edge Intelligence and Next-Gen AMI solutions across the APAC region.</p></div>
-      <div class="achievement reveal"><div class="num">02</div><p>Recognized for <strong>revamping documentation processes</strong> across multiple projects through standardized frameworks at <strong>Amantya Technologies</strong>.</p></div>
-      <div class="achievement reveal"><div class="num">03</div><p>Appreciated by NAM customers for creating <strong>interactive eLearning content and training materials</strong> that improved product understanding and learner experience.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2>Toolkit</h2>
-      <p>A cross-functional toolkit for authoring, version control, development-adjacent workflows, visual content and learning.</p>
-    </div>
-    <div class="skills">
-      <div class="skillbox reveal"><h3>Authoring & Documentation</h3><div class="tags">
-        <span class="tag">MadCap Flare</span><span class="tag">Adobe FrameMaker</span><span class="tag">RoboHelp</span><span class="tag">DITA</span><span class="tag">XML</span><span class="tag">Markdown</span><span class="tag">API Docs</span><span class="tag">White Papers</span>
-      </div></div>
-      <div class="skillbox reveal"><h3>Dev Tools</h3><div class="tags">
-        <span class="tag">VS Code</span><span class="tag">Confluence</span><span class="tag">Jira</span><span class="tag">Azure DevOps</span><span class="tag">GitLab</span><span class="tag">SourceTree</span><span class="tag">SAP</span>
-      </div></div>
-      <div class="skillbox reveal"><h3>eLearning & Visual Content</h3><div class="tags">
-        <span class="tag">Camtasia</span><span class="tag">Captivate</span><span class="tag">Articulate 360</span><span class="tag">Photoshop</span><span class="tag">draw.io</span>
-      </div></div>
-      <div class="skillbox reveal"><h3>Languages</h3><div class="tags">
-        <span class="tag">English · Full Professional</span><span class="tag">Hindi · Full Professional</span><span class="tag">Bengali · Native</span>
-      </div></div>
-    </div>
-  </div>
-</section>
-
-
-
-<section id="contact">
-  <div class="container">
-    <div class="contact reveal">
-      <div class="eyebrow" style="justify-content:center">Let’s connect</div>
-      <h2>Have a complex product to explain?</h2>
-      <p>Let’s create documentation, learning content and information experiences that make technical products easier to understand and use.</p>
-      <div class="cta" style="justify-content:center">
-        <a class="btn primary" href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com</a>
-        <a class="btn" href="tel:+919910475660">+91 99104 75660</a>
-        <a class="btn" href="https://linkedin.com/in/jahidiftikar" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container">© 2026 Jahid Iftikar · Technical Writer & Instructional Designer</div>
-</footer>
-
+<section class="hero section-shell"><div class="hero-grid"><div class="hero-copy reveal"><div class="eyebrow"><span class="status-dot"></span><span class="role-mask">Technical Writer · Instructional Designer</span></div><h1 class="quote-showcase" aria-live="polite"><span class="quote-text">Turning complex systems into clear, useful knowledge.</span></h1><p class="hero-lede">Analytical and detail-oriented Technical Writer with 8+ years of experience creating technical documentation for software systems, products, and application user interfaces across telecom, automobile, and energy.</p><div class="hero-actions"><a class="button primary" href="#experience">Explore my work <span>↘</span></a><a class="button secondary" href="mailto:jahid.iftikar@gmail.com">Start a conversation</a></div><div class="contact-strip"><a href="tel:+919910475660">+91 9910475660</a><a href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com</a><a href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>DLF Phase 3, Gurugram</span></div></div><aside class="hero-card reveal"><div class="monogram">JI</div><div class="card-label">Professional snapshot</div><div class="metric"><strong>8+</strong><span>Years of<br>experience</span></div><div class="domain-row"><span>SaaS</span><span>Engineering</span><span>Telecom</span><span>Energy</span></div><div class="card-footer">Product Documentation · eLearning</div></aside></div></section>
+<section id="about" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">01</span><div><p class="kicker">Profile</p><h2>Clarity, built into every deliverable.</h2></div></div><div class="about-grid"><p class="large-copy reveal">Skilled in requirement analysis, topic-based authoring, Online Help development, and applying MSTP Style Guide standards.</p><div class="capability-cards reveal"><article tabindex="0"><span>01</span><h3>Technical Documentation</h3><p>Installation guides, user guides, operational manuals, release notes, whitepapers, API documentation, and engineering artifacts.</p></article><article tabindex="0"><span>02</span><h3>Content Management</h3><p>Structured authoring, Markdown, DITA, XML, Online Help, CSS, publishing, and version-control workflows.</p></article><article tabindex="0"><span>03</span><h3>eLearning</h3><p>Storyboards, eLearning content, training materials, and platform publishing.</p></article></div></div></section>
+<section id="experience" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">02</span><div><p class="kicker">Experience</p><h2>A career across complex products and industries.</h2></div></div><div class="timeline">
+<article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Noida</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="Landis+Gyr"><img class="company-logo logo-compact" src="https://landisgyr.com/content/dam/landisgyr/logos/brand-logos/Landis-Gyr_Logo_Horizontal_Grey.png" alt="Landis+Gyr logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Landis+Gyr</span></div><p>Sr. Technical Writer</p></div><span class="industry">Energy · Smart Metering</span></div><ul><li>Created Installation and User Guides for smart metering solutions and backend infrastructure for TEPCO using Adobe Structured FrameMaker.</li><li>Documented the Head-End System migration from on-premises to Google Cloud Platform, including deployment and operational workflows.</li><li>Provided knowledge transfer sessions on Azure DevOps.</li><li>Managed ad-hoc MDMS documentation tasks, including release-note and operational-manual revisions.</li><li>Developed storyboards and eLearning content using Captivate and Camtasia, published on Docebo.</li></ul></div></article>
+<article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Gurugram</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="Amantya Technologies"><img class="company-logo logo-compact" src="https://amantyatech.com/public/img/5gLabEvent/amantya-technologies.png" alt="Amantya Technologies logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Amantya Technologies</span></div><p>Sr. Technical Writer</p></div><span class="industry">Telecom · 5G</span></div><ul><li>Managed documentation for 5G network components and Linux-based deployment platforms using Markdown for Verizon.</li><li>Created whitepapers and technical guides for Network-in-a-Box and the Test Automation Framework.</li><li>Worked with QA and development teams to validate drafts for accuracy and technical alignment.</li><li>Supported B2B proposals and bid documentation, including RFIs and RFPs.</li></ul></div></article>
+<article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Gurugram</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="Guavus, a Thales company"><img class="company-logo" src="https://www.vapor.io/wp-content/uploads/2021/10/Guavus-a-Thales-company-1.png" alt="Guavus, a Thales company logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Guavus, a Thales Company</span></div><p>Sr. Technical Writer</p></div><span class="industry">AI/ML · Software</span></div><ul><li>Created technical documents for AI/ML-driven products including Service-IQ Device Management Analytics and NWDAF.</li><li>Enhanced documentation for the SQLstream project.</li><li>Edited Flare CSS files to improve HTML output.</li><li>Used MadCap Flare, Zendesk, and GitLab for authoring, publishing, documentation management, and version control.</li></ul></div></article>
+<article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Bengaluru</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="umlaut"><img class="company-logo logo-umlaut" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Umlaut_logo.svg" alt="umlaut logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Umlaut Pvt. Ltd.</span></div><p>Technical Author</p></div><span class="industry">Automotive</span></div><ul><li>Created Operation and Repair Manuals for automotive infotainment systems using Arbortext Editor at client locations.</li><li>Gathered insights from subject matter experts to create comprehensive content.</li><li>Analyzed specification sheets, technical drawings, and Bills of Materials to develop engineering artifacts.</li><li>Conducted proofreading and quality reviews for accuracy, consistency, and standards compliance.</li></ul></div></article>
+</div></section>
+<section id="impact" class="impact-section section-pad"><div class="section-shell"><div class="section-heading light reveal"><span class="section-index">03</span><div><p class="kicker">Key achievements</p><h2>Recognition earned through meaningful impact.</h2></div></div><div class="achievement-grid"><article class="achievement reveal" tabindex="0"><div class="achievement-no">01</div><h3>Best Performer Award</h3><p>Received at Landis+Gyr for timely delivery of Edge Intelligence and Next-Gen AMI documentation across the APAC region.</p></article><article class="achievement reveal" tabindex="0"><div class="achievement-no">02</div><h3>Process transformation</h3><p>Recognized for revamping documentation processes across multiple projects through standardized frameworks at Amantya Technologies.</p></article><article class="achievement reveal" tabindex="0"><div class="achievement-no">03</div><h3>Customer appreciation</h3><p>Appreciated by NAM customers for interactive eLearning content and training materials that improved product understanding and the learner experience.</p></article></div></div></section>
+<section id="skills" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">04</span><div><p class="kicker">Toolkit</p><h2>Tools, technologies, and skills that power my work.</h2></div></div><div class="skills-cloud reveal" aria-label="Skills"><span>MS Office</span><span>MadCap Flare</span><span>FrameMaker</span><span>Markdown</span><span>DITA</span><span>XML</span><span>VS Code</span><span>Confluence</span><span>Azure DevOps</span><span>Jira</span><span>SAP</span><span>SourceTree</span><span>GitLab</span><span>White Paper</span><span>Photoshop</span><span>API Docs</span><span>Captivate</span><span>Camtasia</span><span>eLearning</span><span>draw.io</span></div><div class="language-grid reveal"><div><p>English</p><span>Full Professional Proficiency</span></div><div><p>Hindi</p><span>Full Professional Proficiency</span></div><div><p>Bengali</p><span>Native</span></div></div></section>
+<section id="contact" class="contact-section"><div class="section-shell contact-inner reveal"><p class="kicker">Let’s connect</p><h2>Need complex information made clear?</h2><div class="contact-actions"><a class="button bright" href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com ↗</a><a class="contact-icon-link linkedin-button" href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noopener noreferrer" aria-label="View Jahid Iftikar on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.04H3.54V8.98H7.1v11.47z"/></svg></a><a class="text-link phone-link" href="tel:+919910475660"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg><span>+91 9910475660</span></a></div></div></section></main>
+<footer class="footer section-shell"><p>Jahid Iftikar · Technical Writer | Instructional Designer</p><a class="back-to-top" href="#top" aria-label="Back to top">Back to top ↑</a></footer>
 <script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-const words = ["clear experiences.", "usable knowledge.", "better products.", "human-friendly docs."];
-const target = document.getElementById("typing");
-let wi = 0, ci = 0, deleting = false;
-
-function typeLoop(){
-  const word = words[wi];
-  target.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
-  let speed = deleting ? 48 : 82;
-  if(!deleting && ci > word.length){
-    deleting = true; speed = 1450;
-  } else if(deleting && ci < 0){
-    deleting = false; wi = (wi + 1) % words.length; ci = 0; speed = 350;
-  }
-  setTimeout(typeLoop, speed);
+const themeToggle=document.getElementById('theme-toggle');
+const themeLabel=document.getElementById('theme-label');
+function syncThemeControl(){
+  const dark=document.documentElement.dataset.theme==='dark';
+  const action=dark?'Switch to light mode':'Switch to dark mode';
+  themeToggle.setAttribute('aria-label',action);
+  themeToggle.title=action;
+  themeLabel.textContent=action;
+  themeToggle.setAttribute('aria-pressed',String(dark));
 }
-typeLoop();
-
-document.addEventListener("mousemove", (e) => {
-  document.documentElement.style.setProperty("--mx", e.clientX + "px");
-  document.documentElement.style.setProperty("--my", e.clientY + "px");
+themeToggle.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=next;
+  try{
+    window.localStorage.setItem('portfolio-theme',next);
+  }catch(error){
+    // Keep the switch functional when storage is blocked by a sandboxed preview.
+  }
+  syncThemeControl();
 });
+syncThemeControl();
+
+const quotes=[
+{text:"Turning complex systems into clear, useful knowledge.",gradient:"linear-gradient(90deg,#102b30 0%,#0f665f 34%,#394a70 68%,#254a50 100%)"},
+{text:"Designing learning that makes difficult ideas easier.",gradient:"linear-gradient(90deg,#0d2b31 0%,#3d456e 35%,#176663 70%,#24454b 100%)"},
+{text:"Transforming product expertise into confident user action.",gradient:"linear-gradient(90deg,#15343a 0%,#1b596d 32%,#315070 66%,#11655e 100%)"},
+{text:"Creating content where clarity meets purpose.",gradient:"linear-gradient(90deg,#102b30 0%,#31516c 34%,#17645e 68%,#493f61 100%)"}
+];
+const target=document.querySelector('.quote-text');let qi=0,ci=0,typingTimer,rotationTimer;
+function typeQuote(){const quote=quotes[qi];target.style.setProperty('--quote-gradient',quote.gradient);target.textContent=quote.text.slice(0,ci);if(ci<quote.text.length){ci++;typingTimer=setTimeout(typeQuote,24)}else{rotationTimer=setTimeout(changeQuote,1700)}}
+function changeQuote(){target.classList.add('is-changing');setTimeout(()=>{qi=(qi+1)%quotes.length;ci=0;target.textContent="";target.classList.remove('is-changing');typeQuote()},300)}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.textContent=quotes[0].text;target.style.setProperty('--quote-gradient',quotes[0].gradient)}else{target.textContent="";typeQuote()}
+const cursorGlow=document.querySelector('.cursor-glow');
+if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.addEventListener('pointermove',e=>{cursorGlow.style.setProperty('--cursor-x',e.clientX+'px');cursorGlow.style.setProperty('--cursor-y',e.clientY+'px');cursorGlow.classList.add('active')});document.addEventListener('pointerleave',()=>cursorGlow.classList.remove('active'))}
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const backToTop=document.querySelector('.back-to-top');
+backToTop.addEventListener('click',event=>{
+  event.preventDefault();
+  const behavior=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+  window.scrollTo({top:0,left:0,behavior});
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+  history.replaceState(null,'',window.location.pathname+window.location.search);
+});
+const contactNav=document.querySelector('.nav-cta[href="#contact"]');contactNav.addEventListener('click',()=>{contactNav.classList.remove('contact-click');void contactNav.offsetWidth;contactNav.classList.add('contact-click');setTimeout(()=>contactNav.classList.remove('contact-click'),450)});
+const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.site-nav');menu.addEventListener('click',()=>{nav.classList.toggle('open');menu.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 </script>
-</body>
-</html>
+</body></html>
