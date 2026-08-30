@@ -334,6 +334,134 @@ html[data-theme="dark"] .site-nav.open{background:#102b30}
 @media(max-width:800px){.theme-dock{top:92px;right:16px}.theme-label{display:none}.theme-toggle{width:58px;height:32px}html[data-theme="dark"] .theme-thumb{transform:translateX(24px)}}
 @media(max-width:800px){.site-header{top:12px;width:calc(100% - 24px);margin-top:12px}.site-nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:22px;background:#fff;border-radius:18px;box-shadow:var(--shadow)}.site-nav.open{display:flex}.menu-toggle{display:block}.hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:55px}.quote-showcase{height:6.35em;min-height:6.35em}.hero-lede{margin-top:32px}.hero-card{transform:none;translate:0}.timeline{--rail-x:8px;width:100%;padding-left:30px}.timeline-item{padding:24px}.timeline-item:before{left:calc(var(--rail-x) - 30px);top:38px}.role-top h3{font-size:24px}.timeline-body ul{font-size:15px;margin-top:18px}.achievement-grid,.language-grid{grid-template-columns:1fr}.role-top{flex-direction:column}.section-heading{grid-template-columns:45px 1fr}.section-pad{padding:75px 0}.contact-strip{flex-direction:column}.footer{flex-direction:column}}
 @media(pointer:coarse){.cursor-glow{display:none}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.brand-mark::after{display:none}.status-dot{animation:none}.role-mask{clip-path:none;animation:none}.quote-text{animation:none}.quote-text:after{display:none}.cursor-glow{display:none}}
+
+
+/* Mobile layout fix: removes excess vertical space and forces the compact layout
+   on tablets and phones, including mobile browsers using a wider CSS viewport. */
+@media (max-width: 1024px){
+  .site-header{
+    top:12px;
+    width:calc(100% - 24px);
+    margin-top:12px;
+    padding:9px 12px;
+  }
+  .brand{gap:9px;font-size:15px}
+  .brand-mark{width:36px;height:36px;border-radius:11px;font-size:14px}
+  .site-nav{
+    display:none;
+    position:absolute;
+    top:60px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    gap:14px;
+    padding:18px;
+    background:var(--surface-strong);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+  }
+  .site-nav.open{display:flex}
+  .menu-toggle{display:block;color:var(--ink)}
+
+  .theme-dock{top:82px;right:14px}
+  .theme-label{display:none}
+  .theme-toggle{width:54px;height:30px}
+  html[data-theme="dark"] .theme-thumb{transform:translateX(20px)}
+
+  .section-shell{width:min(100% - 28px,720px)}
+  .hero{
+    min-height:auto;
+    display:block;
+    padding:62px 0 58px;
+  }
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero h1{
+    margin:18px 0 0;
+    font-size:clamp(40px,10.8vw,64px);
+    letter-spacing:-.045em;
+  }
+  .quote-showcase{
+    height:4.45em;
+    min-height:4.45em;
+    overflow:hidden;
+    font-size:inherit;
+  }
+  .hero-lede{margin-top:24px;font-size:16px;line-height:1.55}
+  .hero-actions{margin:22px 0 18px}
+  .contact-strip{gap:8px;flex-direction:column}
+  .hero-card{
+    width:100%;
+    max-width:520px;
+    justify-self:start;
+    padding:26px;
+    border-radius:24px;
+    transform:none;
+    translate:0;
+  }
+  .monogram{width:68px;height:68px;border-radius:20px;font-size:24px}
+  .card-label{margin:20px 0 6px}
+  .metric strong{font-size:52px}
+  .domain-row{margin:18px 0}
+
+  .section-pad{padding:58px 0}
+  .section-heading{
+    grid-template-columns:38px 1fr;
+    gap:12px;
+    margin-bottom:32px;
+  }
+  .section-heading h2{font-size:clamp(30px,7.7vw,45px)}
+  .kicker{font-size:16px}
+  .about-grid{grid-template-columns:1fr;gap:24px}
+  .large-copy{font-size:22px}
+  .capability-cards article{padding:21px}
+
+  .timeline{--rail-x:7px;width:100%;padding-left:26px;gap:16px}
+  .timeline:before{top:38px;bottom:38px}
+  .timeline-item{padding:22px 20px;border-radius:22px}
+  .timeline-item:before{left:calc(var(--rail-x) - 26px);top:34px}
+  .role-top{flex-direction:column;gap:12px}
+  .role-top h3{font-size:23px}
+  .timeline-body ul{font-size:15px;line-height:1.55;margin-top:16px;padding-left:19px}
+  .industry{margin-top:0;padding:8px 12px}
+
+  .achievement-grid,.language-grid{grid-template-columns:1fr}
+  .achievement{padding:22px}
+  .skills-cloud{gap:9px}
+  .skills-cloud span{padding:10px 14px 10px 30px;font-size:13px}
+  .language-grid{margin-top:30px}
+
+  .contact-section{padding:58px 0}
+  .contact-inner h2{font-size:clamp(36px,10vw,54px)}
+  .footer{flex-direction:column;gap:4px;padding:20px 0}
+}
+
+@media (max-width: 600px){
+  .section-shell{width:calc(100% - 24px)}
+  .hero{padding:52px 0 46px}
+  .hero-grid{gap:26px}
+  .eyebrow{font-size:11px;letter-spacing:.12em}
+  .role-mask{white-space:normal}
+  .hero h1{font-size:clamp(36px,11.2vw,48px)}
+  .quote-showcase{height:4.15em;min-height:4.15em}
+  .hero-lede{margin-top:18px}
+  .hero-actions{gap:10px}
+  .button{padding:12px 15px;border-radius:12px;font-size:14px}
+  .hero-card{padding:22px}
+  .section-pad{padding:48px 0}
+  .section-heading{grid-template-columns:30px 1fr;margin-bottom:26px}
+  .section-index{font-size:12px}
+  .section-heading h2{font-size:30px}
+  .large-copy{font-size:20px}
+  .company-logo-wrap{width:160px;height:38px}
+  .company-logo{width:150px;height:32px}
+  .company-logo.logo-compact{width:105px;height:22px}
+  .timeline{padding-left:20px}
+  .timeline-item:before{left:calc(var(--rail-x) - 20px)}
+  .contact-actions{gap:10px}
+  .contact-actions .bright{max-width:100%;font-size:13px;padding:0 14px}
+}
+
 </style>
 </head>
 <body id="top">
