@@ -16,6 +16,11 @@
   const preferred=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   document.documentElement.dataset.theme=saved||preferred;
 })();
+
+const progressBar=document.querySelector('.scroll-progress');
+function updateProgress(){if(!progressBar)return;const max=document.documentElement.scrollHeight-innerHeight;progressBar.style.transform=`scaleX(${max>0?scrollY/max:0})`}
+addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);updateProgress();
+
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -462,9 +467,272 @@ html[data-theme="dark"] .site-nav.open{background:#102b30}
   .contact-actions .bright{max-width:100%;font-size:13px;padding:0 14px}
 }
 
+
+/* ========================================================================== */
+/* 2026 ONE UI INSPIRED PORTFOLIO REFRESH                                     */
+/* Comfortable focus blocks, vivid accents, responsive interaction zones.     */
+/* ========================================================================== */
+:root{
+  --ink:#101114;--muted:#62646c;--blue:#2563eb;--blue2:#60a5fa;--violet:#7c3aed;
+  --coral:#ff6b72;--yellow:#f4c84a;--mint:#2dd4bf;--canvas:#f4f5f8;
+  --surface:#fff;--surface-2:#eef1f7;--line:rgba(17,24,39,.08);
+  --page-bg:linear-gradient(180deg,#f7f8fb 0%,#f2f4f8 100%);
+  --shadow:0 18px 50px rgba(36,45,70,.09);--shadow-lg:0 30px 80px rgba(37,99,235,.15)
+}
+html[data-theme="dark"]{
+  --ink:#f7f7fb;--muted:#b2b5c1;--canvas:#090b11;--surface:#151821;--surface-2:#1d2230;
+  --line:rgba(255,255,255,.09);--page-bg:linear-gradient(180deg,#090b11 0%,#10131b 100%);
+  --shadow:0 18px 55px rgba(0,0,0,.34);--shadow-lg:0 30px 90px rgba(37,99,235,.22)
+}
+body{background:var(--page-bg);color:var(--ink);font-family:"DM Sans",sans-serif;letter-spacing:-.006em}
+body:before{background:radial-gradient(circle at 8% 8%,rgba(96,165,250,.20),transparent 27%),radial-gradient(circle at 92% 18%,rgba(124,58,237,.14),transparent 25%),radial-gradient(circle at 70% 90%,rgba(255,107,114,.10),transparent 25%)}
+.cursor-glow{background:radial-gradient(circle 290px at var(--cursor-x,50%) var(--cursor-y,50%),rgba(37,99,235,.11),rgba(124,58,237,.045) 42%,transparent 72%)}
+.section-shell{width:min(1200px,calc(100% - 48px))}.section-pad{padding:120px 0}
+.site-header{top:16px;padding:10px 12px 10px 14px;background:color-mix(in srgb,var(--surface) 80%,transparent);border:1px solid var(--line);box-shadow:0 12px 38px rgba(36,45,70,.10);border-radius:28px}
+.brand{font-family:Manrope;font-weight:800}.brand-mark{width:44px;height:44px;border-radius:15px;background:linear-gradient(145deg,var(--blue),var(--violet));box-shadow:0 10px 28px rgba(37,99,235,.28)}
+.site-nav{gap:8px}.site-nav a{padding:10px 14px;border-radius:14px}.site-nav a:hover{color:var(--blue);background:var(--surface-2)}
+.nav-cta{background:var(--ink)!important;color:var(--surface)!important;padding-inline:19px!important}
+.theme-dock{top:100px}.theme-toggle{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}.theme-thumb{background:linear-gradient(145deg,var(--blue),var(--violet))}
+.hero{min-height:92vh;padding:90px 0}.hero-grid{grid-template-columns:1.35fr .65fr;gap:44px}
+.eyebrow{display:inline-flex;align-items:center;padding:9px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:0 9px 25px rgba(36,45,70,.07);color:var(--blue);letter-spacing:.1em}
+.status-dot{background:var(--mint);box-shadow:0 0 0 6px rgba(45,212,191,.14)}
+.hero h1{font-size:clamp(54px,7.2vw,94px);letter-spacing:-.065em;margin:24px 0 0}.quote-showcase{height:3.7em;min-height:3.7em}
+.quote-text{--quote-gradient:linear-gradient(100deg,#111827 0%,#2563eb 30%,#7c3aed 64%,#e94a76 100%)!important;background-size:160% 100%}
+html[data-theme="dark"] .quote-text{--quote-gradient:linear-gradient(100deg,#ffffff 0%,#7db2ff 32%,#b89cff 64%,#ff91ac 100%)!important}
+.hero-lede{font-size:19px;line-height:1.7;max-width:750px;color:var(--muted)}
+.button{padding:15px 21px;border-radius:18px}.primary{background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 14px 34px rgba(37,99,235,.28)}.secondary{background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 26px rgba(36,45,70,.07)}
+.contact-strip{gap:8px}.contact-strip a,.contact-strip span{padding:7px 11px;border-radius:10px;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.hero-card{translate:0 0;transform:rotate(2deg);padding:34px;border-radius:40px;border:1px solid rgba(255,255,255,.35);background:linear-gradient(145deg,#2468f2 0%,#7047e8 56%,#f15d89 120%);color:#fff;box-shadow:0 35px 90px rgba(65,65,170,.28)}
+.hero-card:before{content:"";position:absolute;width:130px;height:130px;left:-35px;bottom:-45px;border-radius:50%;background:#f6ca4d;opacity:.9}.hero-card:after{background:#64e2d3;opacity:.5}.monogram{background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(12px)}.hero-card .card-label,.hero-card .card-footer{color:rgba(255,255,255,.78)}.hero-card .domain-row span{background:rgba(255,255,255,.17);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:none}.hero-card .card-footer{border-color:rgba(255,255,255,.22)}
+.section-heading{grid-template-columns:64px 1fr}.section-index{color:var(--blue);border-color:var(--blue)}.kicker{color:var(--blue);letter-spacing:.1em}.section-heading h2{font-size:clamp(40px,5vw,64px);letter-spacing:-.055em}
+.about-grid{grid-template-columns:.9fr 1.1fr}.large-copy{font-size:clamp(29px,3.2vw,43px);letter-spacing:-.035em}
+.capability-cards{grid-template-columns:repeat(2,1fr)}.capability-cards article:first-child{grid-column:1/-1}
+.capability-cards article,.education-card{padding:28px;border-radius:30px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.capability-cards article:nth-child(1){background:linear-gradient(145deg,color-mix(in srgb,var(--blue) 10%,var(--surface)),var(--surface))}.capability-cards article:nth-child(2){background:linear-gradient(145deg,color-mix(in srgb,var(--violet) 10%,var(--surface)),var(--surface))}.capability-cards article:nth-child(3){background:linear-gradient(145deg,color-mix(in srgb,var(--coral) 10%,var(--surface)),var(--surface))}
+.capability-cards article>span{color:var(--blue)}
+.timeline{padding-left:0;gap:20px}.timeline:before,.timeline-item:before{display:none}.timeline-item{padding:34px 38px;border-radius:34px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.timeline-item:nth-child(4n+1){border-left:6px solid var(--blue)}.timeline-item:nth-child(4n+2){border-left:6px solid var(--violet)}.timeline-item:nth-child(4n+3){border-left:6px solid var(--coral)}.timeline-item:nth-child(4n){border-left:6px solid var(--mint)}
+.timeline-item:hover,.timeline-item:focus-visible{transform:translateY(-7px);background:var(--surface);border-color:color-mix(in srgb,var(--blue) 35%,var(--line));box-shadow:var(--shadow-lg)}
+.role-top h3{font-size:31px}.industry{background:var(--surface-2);color:var(--ink);padding:10px 15px}.timeline-body ul{max-width:none;color:var(--muted)}
+.impact-section{margin:0 18px;border-radius:52px;background:linear-gradient(135deg,#1465f4 0%,#6945df 52%,#d94c82 100%);box-shadow:0 35px 85px rgba(76,60,190,.22)}
+.achievement-grid{gap:20px}.achievement{padding:30px;border-radius:30px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2)}.achievement-no{color:#d7f7ff}.achievement h3{font-size:24px}.achievement p{color:rgba(255,255,255,.82)}
+.skills-cloud{gap:10px}.skills-cloud span{padding:12px 18px 12px 34px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 22px rgba(36,45,70,.06)}
+.language-grid div{padding:25px;border:0;border-radius:24px;background:var(--surface);box-shadow:var(--shadow)}
+.contact-section{margin:0 18px 18px;border-radius:52px;background:linear-gradient(125deg,#ffe3e7,#eef0ff 43%,#dff7ff 100%);color:#111827}.contact-inner h2{max-width:850px}.contact-actions .bright,.contact-icon-link{background:#fff;color:#111827}
+html[data-theme="dark"] .contact-section{background:linear-gradient(125deg,#321923,#1d1d38 48%,#102b37);color:#fff}
+.footer{padding:30px 0 38px}.back-to-top{padding:9px 14px;border-radius:12px;background:var(--surface)}
+::selection{background:rgba(37,99,235,.22)}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--blue) 55%,transparent);outline-offset:4px}
+.scroll-progress{position:fixed;z-index:99;left:0;top:0;width:100%;height:4px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--blue),var(--violet),var(--coral));box-shadow:0 2px 12px rgba(37,99,235,.35)}
+@media(max-width:1024px){.section-shell{width:min(100% - 28px,760px)}.hero-grid{grid-template-columns:1fr}.hero-card{max-width:560px;transform:none}.capability-cards{grid-template-columns:1fr}.capability-cards article:first-child{grid-column:auto}.impact-section,.contact-section{margin-inline:10px;border-radius:38px}}
+@media(max-width:600px){.section-shell{width:calc(100% - 24px)}.hero h1{font-size:clamp(39px,11.5vw,54px)}.quote-showcase{height:4.35em;min-height:4.35em}.hero-card{border-radius:30px}.timeline-item{padding:24px 22px;border-radius:26px}.impact-section,.contact-section{margin-inline:6px;border-radius:30px}.section-heading h2{font-size:34px}.contact-strip a,.contact-strip span{background:transparent;padding:2px 0}}
+
+
+/* 2026 refined editorial palette: muted, coordinated, and free of bright blue */
+:root{
+  --blue:#49635e; --blue2:#8da39c; --violet:#75677d; --coral:#a96f68;
+  --yellow:#b79b5f; --mint:#5f8f83; --canvas:#f3f1ed;
+  --surface:#fbfaf8; --surface-2:#ebe8e2; --line:rgba(42,48,47,.10);
+  --page-bg:linear-gradient(180deg,#f7f5f1 0%,#efeeea 100%);
+  --shadow:0 18px 50px rgba(49,57,55,.09); --shadow-lg:0 30px 80px rgba(78,91,87,.16)
+}
+html[data-theme="dark"]{
+  --canvas:#0d1110; --surface:#171c1a; --surface-2:#202623;
+  --line:rgba(235,239,235,.09); --page-bg:linear-gradient(180deg,#0d1110 0%,#141816 100%);
+  --shadow-lg:0 30px 80px rgba(0,0,0,.34)
+}
+body:before{background:radial-gradient(circle at 9% 10%,rgba(95,143,131,.16),transparent 28%),radial-gradient(circle at 91% 18%,rgba(117,103,125,.13),transparent 26%),radial-gradient(circle at 70% 88%,rgba(169,111,104,.09),transparent 26%)}
+.cursor-glow{background:radial-gradient(circle 290px at var(--cursor-x,50%) var(--cursor-y,50%),rgba(95,143,131,.10),rgba(117,103,125,.035) 44%,transparent 72%)}
+.brand-mark,.primary,.theme-thumb{background:linear-gradient(145deg,#486b63,#74687b)}
+.brand-mark{box-shadow:0 10px 28px rgba(72,107,99,.24)}
+.eyebrow,.section-index,.kicker{color:#526f68}.section-index{border-color:#526f68}
+.site-nav a:hover{color:#526f68}.status-dot{background:#698f85;box-shadow:0 0 0 6px rgba(105,143,133,.14)}
+.quote-text{--quote-gradient:linear-gradient(100deg,#252b29 0%,#4f6c65 34%,#74687b 67%,#956d66 100%)!important}
+html[data-theme="dark"] .quote-text{--quote-gradient:linear-gradient(100deg,#f5f3ee 0%,#a8c3bb 35%,#b8a9c0 68%,#d7aaa2 100%)!important}
+.hero-card{background:linear-gradient(145deg,#435f59 0%,#6a6173 57%,#966d66 120%);box-shadow:0 35px 90px rgba(74,70,82,.25)}
+.hero-card:before{background:#c2a66a}.hero-card:after{background:#9fc3b8}
+.capability-cards article:nth-child(1){background:linear-gradient(145deg,color-mix(in srgb,#708b83 12%,var(--surface)),var(--surface))}
+.capability-cards article:nth-child(2){background:linear-gradient(145deg,color-mix(in srgb,#85778d 12%,var(--surface)),var(--surface))}
+.capability-cards article:nth-child(3){background:linear-gradient(145deg,color-mix(in srgb,#ae7d75 11%,var(--surface)),var(--surface))}
+.capability-cards article>span{color:#627d75}
+.timeline-item:nth-child(4n+1){border-left-color:#607d75}.timeline-item:nth-child(4n+2){border-left-color:#776a80}.timeline-item:nth-child(4n+3){border-left-color:#a2746d}.timeline-item:nth-child(4n){border-left-color:#738c72}
+.timeline-item:hover,.timeline-item:focus-visible{border-color:color-mix(in srgb,#607d75 38%,var(--line))}
+.impact-section{background:linear-gradient(135deg,#354b47 0%,#62586b 54%,#8a625d 100%);box-shadow:0 35px 85px rgba(65,58,71,.20)}
+.contact-section{background:linear-gradient(125deg,#eee3dd,#e8e5ea 46%,#dfeae6 100%)}
+html[data-theme="dark"] .contact-section{background:linear-gradient(125deg,#2b201e,#24222b 48%,#192825)}
+.scroll-progress{background:linear-gradient(90deg,#607d75,#776a80,#a2746d);box-shadow:0 2px 12px rgba(96,125,117,.28)}
+.skills-cloud span:nth-child(6n+1){--chip:#9a6e68}.skills-cloud span:nth-child(6n+2){--chip:#74677c}.skills-cloud span:nth-child(6n+3){--chip:#a88c55}.skills-cloud span:nth-child(6n+4){--chip:#5f8279}.skills-cloud span:nth-child(6n+5){--chip:#667c86}.skills-cloud span:nth-child(6n){--chip:#788264}
+
+/* Cinematic heading reveal for the five key statements */
+.motion-heading{perspective:900px}
+.motion-heading .motion-word{display:inline-block;opacity:0;filter:blur(9px);transform:translateY(34px) rotateX(-24deg);transform-origin:50% 100%;transition:opacity .72s ease,filter .8s ease,transform .9s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--word-index) * 75ms)}
+.motion-heading.motion-visible .motion-word{opacity:1;filter:blur(0);transform:translateY(0) rotateX(0)}
+.motion-heading:after{content:"";display:block;width:0;height:3px;margin-top:18px;border-radius:99px;background:linear-gradient(90deg,#607d75,#776a80,#a2746d);opacity:.8;transition:width 1.2s cubic-bezier(.16,1,.3,1) .25s}
+.motion-heading.motion-visible:after{width:min(190px,36%)}
+#contact .motion-heading:after{width:0}.contact-inner.motion-ready .motion-heading.motion-visible:after{width:min(170px,34%)}
+@media (prefers-reduced-motion:reduce){.motion-heading .motion-word{opacity:1;filter:none;transform:none;transition:none}.motion-heading:after{width:min(190px,36%);transition:none}}
+
+
+/* ========================================================================== */
+/* Screenshot-inspired premium palette: midnight, periwinkle, violet, cyan    */
+/* ========================================================================== */
+:root{
+  --ink:#0f1d33; --muted:#66758e;
+  --blue:#4c79e8; --blue2:#6d83e8; --violet:#7856df;
+  --coral:#b64fd7; --yellow:#92d8ef; --mint:#26c99a;
+  --canvas:#f5f7fc; --surface:#ffffff; --surface-2:#f0f3fa;
+  --line:rgba(15,29,51,.10);
+  --page-bg:linear-gradient(135deg,#f8f9ff 0%,#f4f7fc 48%,#eef9fc 100%);
+  --shadow:0 18px 55px rgba(50,67,112,.11);
+  --shadow-lg:0 30px 85px rgba(75,81,171,.20);
+}
+html[data-theme="dark"]{
+  --ink:#f4f6ff; --muted:#aab5cc; --canvas:#090d19;
+  --surface:#11182a; --surface-2:#18223a; --line:rgba(215,224,255,.11);
+  --page-bg:linear-gradient(135deg,#080d1a 0%,#10152a 48%,#0b2030 100%);
+  --shadow:0 18px 55px rgba(0,0,0,.35); --shadow-lg:0 30px 90px rgba(68,75,190,.28);
+}
+body:before{background:radial-gradient(circle at 8% 13%,rgba(117,86,223,.14),transparent 28%),radial-gradient(circle at 92% 34%,rgba(39,192,218,.15),transparent 29%),radial-gradient(circle at 58% 92%,rgba(91,112,225,.10),transparent 27%)}
+html[data-theme="dark"] body:before{background:radial-gradient(circle at 8% 12%,rgba(124,86,232,.19),transparent 28%),radial-gradient(circle at 92% 30%,rgba(35,183,211,.13),transparent 30%)}
+.cursor-glow{background:radial-gradient(circle 300px at var(--cursor-x,50%) var(--cursor-y,50%),rgba(101,92,225,.12),rgba(32,188,214,.05) 43%,transparent 72%)}
+.site-header{background:color-mix(in srgb,var(--surface) 83%,transparent);border-color:rgba(15,29,51,.08);box-shadow:0 12px 38px rgba(45,60,105,.09)}
+.brand-mark,.primary,.theme-thumb{background:linear-gradient(145deg,#8355e7,#5d73e4)}
+.brand-mark{box-shadow:0 11px 28px rgba(112,80,222,.28)}
+.site-nav a:hover{color:#5d63d9;background:#f0f2fb}
+html[data-theme="dark"] .site-nav a:hover{color:#a9b3ff;background:#1a2340}
+.eyebrow{color:#684ee0;background:rgba(255,255,255,.78);border-color:rgba(106,78,224,.10)}
+.status-dot{background:#29c993;box-shadow:0 0 0 6px rgba(41,201,147,.14)}
+.eyebrow,.section-index,.kicker{color:#6554df}.section-index{border-color:#6554df}
+.quote-text{--quote-gradient:linear-gradient(100deg,#0f1d33 0%,#5965df 35%,#397fe1 64%,#b54bd4 100%)!important}
+html[data-theme="dark"] .quote-text{--quote-gradient:linear-gradient(100deg,#ffffff 0%,#aab4ff 34%,#79c9f2 66%,#dd89ed 100%)!important}
+.quote-text:after{background:#17b8c9}
+.primary{box-shadow:0 14px 34px rgba(91,91,218,.28)}
+.hero-card{background:linear-gradient(145deg,#2b4673 0%,#654fc0 49%,#22acc0 115%);box-shadow:0 35px 90px rgba(62,67,153,.29)}
+.hero-card:before{background:#8a6df0;opacity:.62}.hero-card:after{background:#49d7e4;opacity:.40}
+.monogram{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25)}
+.capability-cards article:nth-child(1){background:linear-gradient(145deg,color-mix(in srgb,#7081e8 12%,var(--surface)),var(--surface))}
+.capability-cards article:nth-child(2){background:linear-gradient(145deg,color-mix(in srgb,#8664de 12%,var(--surface)),var(--surface))}
+.capability-cards article:nth-child(3){background:linear-gradient(145deg,color-mix(in srgb,#29bcd0 11%,var(--surface)),var(--surface))}
+.capability-cards article>span{color:#6259d8}
+.timeline-item:nth-child(4n+1){border-left-color:#5d79e4}.timeline-item:nth-child(4n+2){border-left-color:#7654d8}.timeline-item:nth-child(4n+3){border-left-color:#b34ed1}.timeline-item:nth-child(4n){border-left-color:#24b7c8}
+.timeline-item:hover,.timeline-item:focus-visible{border-color:color-mix(in srgb,#6554df 38%,var(--line));box-shadow:var(--shadow-lg)}
+.timeline-item:hover .role-top h3,.timeline-item:focus-visible .role-top h3{color:#554fc8}
+.impact-section{background:linear-gradient(135deg,#263f6b 0%,#654db8 52%,#1fa9ba 100%);box-shadow:0 35px 85px rgba(62,60,157,.23)}
+.contact-section{background:linear-gradient(125deg,#f1ecff 0%,#eef2ff 46%,#e5f8fb 100%)}
+html[data-theme="dark"] .contact-section{background:linear-gradient(125deg,#231b39,#1b203c 48%,#102f3b)}
+.scroll-progress,.motion-heading:after{background:linear-gradient(90deg,#5c78e4,#7955dd,#21b7c8)}
+.scroll-progress{box-shadow:0 2px 12px rgba(91,91,218,.32)}
+.skills-cloud span:nth-child(6n+1){--chip:#a955cf}.skills-cloud span:nth-child(6n+2){--chip:#7158dc}.skills-cloud span:nth-child(6n+3){--chip:#4f78df}.skills-cloud span:nth-child(6n+4){--chip:#1eafbd}.skills-cloud span:nth-child(6n+5){--chip:#3a91d6}.skills-cloud span:nth-child(6n){--chip:#6773c9}
+::selection{background:rgba(104,84,224,.22)}
+:focus-visible{outline-color:rgba(104,84,224,.48)}
+
+
+/* ========================================================================== */
+/* EMERALD EDITORIAL PALETTE                                                   */
+/* Inspired by the supplied reference: cool canvas, ink, emerald, soft cards. */
+/* ========================================================================== */
+:root{
+  --ink:#172624;--muted:#5f6b69;--blue:#087b68;--blue2:#58a995;
+  --violet:#82566f;--coral:#a65463;--yellow:#e7c85b;--mint:#128873;
+  --canvas:#f3f6f7;--surface:#ffffff;--surface-2:#eef3f2;
+  --line:rgba(23,38,36,.12);--page-bg:#f3f6f7;
+  --shadow:0 12px 34px rgba(27,50,46,.07);--shadow-lg:0 22px 52px rgba(27,50,46,.12);
+  --mint-card:#dceee5;--rose-card:#f1dde2;--sun-card:#f6e9aa;
+}
+html[data-theme="dark"]{
+  --ink:#edf5f2;--muted:#a9bbb6;--canvas:#0c1513;--surface:#121f1c;
+  --surface-2:#192a26;--line:rgba(226,243,238,.11);--page-bg:#0c1513;
+  --shadow:0 15px 40px rgba(0,0,0,.28);--shadow-lg:0 24px 58px rgba(0,0,0,.40);
+  --mint-card:#17342c;--rose-card:#38262c;--sun-card:#3c351d;
+}
+body{background:var(--page-bg);color:var(--ink)}
+body:before{background:linear-gradient(180deg,rgba(255,255,255,.28),transparent 32%)}
+html[data-theme="dark"] body:before{background:linear-gradient(180deg,rgba(255,255,255,.015),transparent 28%)}
+.cursor-glow{display:none}.section-shell{width:min(1180px,calc(100% - 48px))}.section-pad{padding:104px 0}
+.site-header{top:0;width:100%;max-width:none;margin:0;padding:13px max(24px,calc((100vw - 1180px)/2));border-radius:0;background:color-mix(in srgb,var(--surface) 96%,transparent);border:0;border-bottom:1px solid var(--line);box-shadow:none;backdrop-filter:blur(16px)}
+.brand{gap:11px}.brand-mark{width:40px;height:40px;border-radius:10px;background:#087b68;box-shadow:none}.brand-mark:after{display:none}
+.site-nav{gap:20px}.site-nav a{padding:13px 4px;border-radius:0;border-bottom:2px solid transparent}.site-nav a:hover{color:#087b68;background:transparent;border-bottom-color:#087b68}.nav-cta{padding:11px 18px!important;border-radius:8px!important;border:1px solid #076c5c!important;background:#087b68!important;color:white!important}
+html[data-theme="dark"] .nav-cta{background:#36b59b!important;color:#07120f!important;border-color:#36b59b!important}
+.theme-dock{top:88px;right:max(24px,calc((100vw - 1180px)/2))}.theme-toggle{width:54px;height:31px;background:var(--surface);border:1px solid var(--line);box-shadow:none}.theme-thumb{width:23px;height:23px;background:#087b68;box-shadow:none}html[data-theme="dark"] .theme-thumb{transform:translateX(22px);background:#51c9ad}
+.hero{min-height:78vh;padding:58px 0 76px}.hero-grid{grid-template-columns:1.22fr .78fr;gap:84px}.eyebrow{padding:0;border:0;background:transparent;box-shadow:none;color:#34423f;letter-spacing:.16em}.status-dot{width:8px;height:8px;background:#087b68;box-shadow:none}.eyebrow:before{content:"";width:24px;height:2px;background:#087b68;margin-right:12px}.hero h1{font-size:clamp(52px,6.5vw,84px);letter-spacing:-.058em;margin:20px 0 0}.quote-showcase{height:4.25em;min-height:4.25em;overflow:hidden}.quote-text{background:none!important;color:#172624!important;animation:none}.quote-primary{color:#172624}.quote-accent{color:#08846e}.quote-text:after{background:#087b68}html[data-theme="dark"] .quote-text{background:none!important;color:#edf5f2!important}html[data-theme="dark"] .quote-primary{color:#edf5f2}html[data-theme="dark"] .quote-accent{color:#53c8ae}
+.hero-lede{margin-top:30px;max-width:690px;font-size:18px;line-height:1.7;color:var(--muted)}.hero-actions{margin:26px 0 20px}.button{padding:13px 18px;border-radius:8px}.primary{background:#087b68;box-shadow:none}.primary:hover{background:#066b5b}.secondary{background:var(--surface);border:1px solid var(--line);box-shadow:none}.contact-strip{gap:16px}.contact-strip a,.contact-strip span{padding:0;background:transparent}
+.hero-card{transform:rotate(1.2deg);translate:0;padding:0;border-radius:14px;color:var(--ink);background:var(--surface);border:1px solid var(--line);box-shadow:12px 14px 0 rgba(8,123,104,.045);overflow:hidden}.hero-card:before,.hero-card:after{display:none}.monogram{width:100%;height:152px;border-radius:0;background:var(--mint-card);color:#075f50;border:0;font-size:48px;box-shadow:none}.hero-card .card-label{margin:0;padding:22px 26px 7px;color:var(--muted);font-family:monospace;font-size:13px}.metric{padding:0 26px}.metric strong{display:inline-block;min-width:2ch;font-size:56px;color:#087b68;font-variant-numeric:tabular-nums}.domain-row{padding:0 26px;margin:20px 0}.hero-card .domain-row span{background:var(--surface-2);border:1px solid var(--line);color:var(--ink);box-shadow:none}.hero-card .domain-row span::before,.hero-card .domain-row span:nth-child(2)::before,.hero-card .domain-row span:nth-child(3)::before{background:#087B68}.hero-card .domain-row span:hover{background:#087B68;color:#fff;border-color:#087B68;box-shadow:0 7px 16px rgba(8,123,104,.18)}html[data-theme="dark"] .hero-card .domain-row span::before,html[data-theme="dark"] .hero-card .domain-row span:nth-child(2)::before,html[data-theme="dark"] .hero-card .domain-row span:nth-child(3)::before{background:#087B68}html[data-theme="dark"] .hero-card .domain-row span:hover{color:#fff;border-color:#087B68}.hero-card .card-footer{margin:0 26px;padding:17px 0 22px;border-color:var(--line);color:var(--muted)}
+.section-heading{grid-template-columns:42px 1fr;gap:18px;margin-bottom:45px}.section-index{color:#087b68;border-color:#087b68}.kicker{color:#087b68;font-size:14px;letter-spacing:.17em}.section-heading h2{font-size:clamp(38px,4.6vw,58px);letter-spacing:-.048em}.motion-heading:after{height:2px;background:#087b68;opacity:.55}
+.about-grid{grid-template-columns:.82fr 1.18fr;gap:54px}.large-copy{font-size:clamp(27px,3vw,39px)}.capability-cards{grid-template-columns:repeat(3,1fr);gap:15px}.capability-cards article:first-child{grid-column:auto}.capability-cards article,.education-card{padding:25px;border-radius:12px;border:1px solid var(--line);box-shadow:none}.capability-cards article:nth-child(1){background:var(--mint-card)}.capability-cards article:nth-child(2){background:var(--rose-card)}.capability-cards article:nth-child(3){background:var(--sun-card)}.capability-cards article>span{color:#087b68;font-family:monospace}.capability-cards article::before,.capability-cards article::after,.achievement::before,.achievement::after{display:none}.capability-cards article:hover,.capability-cards article:focus-visible{transform:translateY(-4px);border-color:rgba(8,123,104,.34);box-shadow:var(--shadow)}.capability-cards article:hover h3,.capability-cards article:focus-visible h3{color:var(--ink);transform:none}
+.timeline{gap:14px}.timeline-item{padding:29px 32px;border-radius:12px;background:var(--surface)!important;border:1px solid var(--line)!important;box-shadow:none}.timeline-item:nth-child(4n+1){border-left:4px solid #087b68!important}.timeline-item:nth-child(4n+2){border-left:4px solid #a65b68!important}.timeline-item:nth-child(4n+3){border-left:4px solid #d2a827!important}.timeline-item:nth-child(4n){border-left:4px solid #526f8f!important}.timeline-item:hover,.timeline-item:focus-visible{transform:translateY(-3px);background:var(--surface)!important;border-color:rgba(8,123,104,.28)!important;box-shadow:var(--shadow)}.timeline-item:hover .role-top h3,.timeline-item:focus-visible .role-top h3{color:var(--ink);transform:none}.timeline-item:hover .role-top p,.timeline-item:focus-visible .role-top p{color:var(--muted);transform:none}.role-top>div>p,html[data-theme="dark"] .role-top>div>p{color:var(--muted)}.industry{border-radius:7px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink)}
+.impact-section{margin:0;border-radius:0;background:#e4efe9;color:#172624;box-shadow:none}.impact-section .section-heading h2{color:#172624}.section-heading.light .kicker,.section-heading.light .section-index{color:#087b68;border-color:#087b68}.achievement-grid{gap:15px}.achievement{padding:28px;border-radius:12px;border:1px solid rgba(23,38,36,.12);box-shadow:none}.achievement:nth-child(1){background:#E3ECF7}.achievement:nth-child(2){background:#ECE6F4}.achievement:nth-child(3){background:#F3E5DC}.achievement h3{color:#172624}.achievement p{color:#52605d}.achievement:hover,.achievement:focus-visible{transform:translateY(-3px);box-shadow:0 12px 28px rgba(27,50,46,.10);border-color:rgba(8,123,104,.28)}.achievement:hover h3,.achievement:focus-visible h3{color:#172624;transform:none}.achievement-icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:22px;border-radius:12px;background:#087b68;color:#fff}.achievement-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.achievement:hover .achievement-icon,.achievement:focus-visible .achievement-icon{transform:translateY(-2px);background:#066b5b}.achievement-icon{transition:transform .28s ease,background .28s ease}html[data-theme="dark"] .impact-section{background:#17322d;color:#fff}html[data-theme="dark"] .impact-section .section-heading h2{color:#fff}html[data-theme="dark"] .section-heading.light .kicker,html[data-theme="dark"] .section-heading.light .section-index{color:#74d2bb;border-color:#74d2bb}html[data-theme="dark"] .achievement{border-color:rgba(255,255,255,.13)}html[data-theme="dark"] .achievement:nth-child(1){background:#21483e}html[data-theme="dark"] .achievement:nth-child(2){background:#48333b}html[data-theme="dark"] .achievement:nth-child(3){background:#4b4328}html[data-theme="dark"] .achievement h3{color:#fff}html[data-theme="dark"] .achievement p{color:#d9ebec}html[data-theme="dark"] .achievement-icon{background:#74d2bb;color:#102e28}html[data-theme="dark"] .achievement:hover,html[data-theme="dark"] .achievement:focus-visible{box-shadow:none;border-color:rgba(255,255,255,.25)}html[data-theme="dark"] .achievement:hover h3,html[data-theme="dark"] .achievement:focus-visible h3{color:#fff}
+.skills-cloud{gap:9px}.skills-cloud span{padding:10px 14px 10px 30px;border-radius:7px;background:var(--surface);border:1px solid var(--line);box-shadow:none;font-size:14px}.skills-cloud span:before{left:12px;width:7px;height:7px;box-shadow:none}.skills-cloud span:nth-child(6n+1){--chip:#087b68}.skills-cloud span:nth-child(6n+2){--chip:#a65b68}.skills-cloud span:nth-child(6n+3){--chip:#c59d25}.skills-cloud span:nth-child(6n+4){--chip:#526f8f}.skills-cloud span:nth-child(6n+5){--chip:#7b5e87}.skills-cloud span:nth-child(6n){--chip:#4e7b62}.language-grid{gap:15px;margin-top:30px}.language-grid div{padding:22px;border-radius:10px;background:var(--surface);border:1px solid var(--line);box-shadow:none}.language-grid div:nth-child(1){border-top:3px solid #087b68}.language-grid div:nth-child(2){border-top:3px solid #a65b68}.language-grid div:nth-child(3){border-top:3px solid #c59d25}
+.contact-section{margin:0;padding:82px 0;border-radius:0;background:#e4efe9;color:#172624;border-top:1px solid rgba(23,38,36,.08)}html[data-theme="dark"] .contact-section{background:#132821;color:#edf5f2}.contact-actions .bright,.contact-icon-link{background:#fff;color:#172624;border:1px solid rgba(23,38,36,.12);box-shadow:none}.contact-actions .bright:hover,.contact-icon-link:hover{box-shadow:none;border-color:#087b68}.footer{padding:28px 0}.back-to-top{border-radius:7px;background:var(--surface);border:1px solid var(--line)}
+.scroll-progress{height:3px;background:#087b68;box-shadow:none}::selection{background:rgba(8,123,104,.20)}:focus-visible{outline-color:rgba(8,123,104,.45)}
+/* Key achievement icons: borderless, transparent, and coordinated with each card. */
+.achievement-icon{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  width:auto;
+  height:auto;
+  margin-bottom:22px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.achievement-icon svg{width:30px;height:30px}
+.achievement:nth-child(1) .achievement-icon{color:#397966}
+.achievement:nth-child(2) .achievement-icon{color:#98596b}
+.achievement:nth-child(3) .achievement-icon{color:#9a7819}
+.achievement:hover .achievement-icon,.achievement:focus-visible .achievement-icon{
+  transform:translateY(-2px);
+  background:transparent;
+}
+html[data-theme="dark"] .achievement:nth-child(1) .achievement-icon{color:#8ed8c0}
+html[data-theme="dark"] .achievement:nth-child(2) .achievement-icon{color:#e2a3b5}
+html[data-theme="dark"] .achievement:nth-child(3) .achievement-icon{color:#ead37a}
+html[data-theme="dark"] .achievement-icon,
+html[data-theme="dark"] .achievement:hover .achievement-icon,
+html[data-theme="dark"] .achievement:focus-visible .achievement-icon{
+  background:transparent;
+}
+
+@media(max-width:1024px){.site-header{top:0;padding-inline:14px}.hero-grid{grid-template-columns:1fr;gap:34px}.hero-card{max-width:520px;transform:none}.capability-cards{grid-template-columns:1fr}.impact-section,.contact-section{margin:0;border-radius:0}}
+@media(max-width:600px){.section-shell{width:calc(100% - 24px)}.hero h1{font-size:clamp(39px,11vw,52px)}.quote-showcase{height:4.65em;min-height:4.65em}.hero-card{border-radius:12px}.timeline-item{padding:22px 20px}.section-heading h2{font-size:33px}.site-nav a{border-bottom:0}.site-nav a:hover{border-bottom:0}}
+
+
+/* Side-by-side contact form, based on the supplied reference. */
+.contact-layout{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:64px;align-items:start}.contact-intro{padding-top:4px}.contact-intro h2{margin:10px 0 28px}.contact-intro .contact-actions{margin:0}.contact-form-card{position:relative;overflow:hidden;padding:30px;border:1px solid rgba(23,38,36,.12);border-radius:16px;background:rgba(255,255,255,.92);box-shadow:0 18px 46px rgba(27,50,46,.10)}.contact-form-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:#087b68}.contact-form{display:grid;gap:19px}.contact-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.contact-field{display:grid;gap:7px}.contact-field label{font:700 14px Manrope;color:#172624}.contact-field input,.contact-field textarea{width:100%;border:1px solid rgba(23,38,36,.15);border-radius:11px;background:#fbfdfc;color:#172624;font:600 15px/1.5 "DM Sans",sans-serif;outline:none;transition:border-color .22s ease,box-shadow .22s ease,background .22s ease}.contact-field input{height:52px;padding:0 15px}.contact-field textarea{min-height:145px;padding:14px 15px;resize:vertical}.contact-field input::placeholder,.contact-field textarea::placeholder{color:#7b8683;font-weight:600}.contact-field input:hover,.contact-field textarea:hover{border-color:rgba(8,123,104,.34)}.contact-field input:focus,.contact-field textarea:focus{border-color:#087b68;background:#fff;box-shadow:0 0 0 4px rgba(8,123,104,.11)}.contact-form-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.compose-email{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 20px;border:1px solid #076c5c;border-radius:9px;background:#087b68;color:#fff;font:700 15px Manrope;cursor:pointer;box-shadow:0 10px 22px rgba(8,123,104,.18);transition:transform .22s ease,background .22s ease,box-shadow .22s ease}.compose-email:hover{transform:translateY(-2px);background:#066b5b;box-shadow:0 14px 28px rgba(8,123,104,.22)}.compose-email svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.form-note{margin:0;color:#65736f;font-size:12.5px;text-align:right}
+html[data-theme="dark"] .contact-form-card{background:rgba(18,31,28,.94);border-color:rgba(226,243,238,.13);box-shadow:0 18px 46px rgba(0,0,0,.22)}html[data-theme="dark"] .contact-field label{color:#edf5f2}html[data-theme="dark"] .contact-field input,html[data-theme="dark"] .contact-field textarea{background:#192a26;border-color:rgba(226,243,238,.14);color:#edf5f2}html[data-theme="dark"] .contact-field input::placeholder,html[data-theme="dark"] .contact-field textarea::placeholder{color:#8fa39d}html[data-theme="dark"] .contact-field input:focus,html[data-theme="dark"] .contact-field textarea:focus{background:#15241f;border-color:#51c9ad;box-shadow:0 0 0 4px rgba(81,201,173,.12)}html[data-theme="dark"] .compose-email{background:#36b59b;border-color:#36b59b;color:#07120f;box-shadow:none}html[data-theme="dark"] .compose-email:hover{background:#51c9ad}html[data-theme="dark"] .form-note{color:#a9bbb6}
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr;gap:30px}.contact-intro h2{max-width:720px}.contact-form-card{padding:26px}}@media(max-width:600px){.contact-form-card{padding:20px}.contact-form-row{grid-template-columns:1fr}.contact-form-footer{align-items:flex-start;flex-direction:column}.compose-email{width:100%}.form-note{text-align:left}}
+
+/* Premium animated documentation editor in Toolkit. */
+.toolkit-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.78fr);gap:54px;align-items:start}
+.toolkit-content{min-width:0}
+.code-editor-stage{display:grid;place-items:center;padding:0 8px 0 24px;perspective:1000px}
+.code-editor-card{width:min(100%,520px);border:1px solid #d9dedc;border-radius:16px;background:#fffefb;box-shadow:0 22px 48px rgba(31,46,43,.11),10px 12px 0 rgba(8,123,104,.035);transform:rotate(1.2deg);overflow:hidden;font-family:Consolas,"Courier New",monospace;animation:editorFloat 6s ease-in-out infinite;transition:box-shadow .3s ease,transform .3s ease}
+.code-editor-card:hover{box-shadow:0 28px 58px rgba(31,46,43,.14),10px 12px 0 rgba(8,123,104,.045)}
+.code-editor-header{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:58px;padding:0 22px;border-bottom:1px solid #e5e8e6;color:#4f5a57;font-size:13px;letter-spacing:.01em}
+.code-editor-terminal{color:#087b68;font-weight:700;font-size:15px}
+.code-editor-body{min-height:0;padding:24px 26px 21px;color:#202825;font-size:clamp(14px,1.45vw,17px);line-height:1.68}
+.code-line{display:block;min-height:1.68em;opacity:0;transform:translateY(5px);transition:opacity .45s ease,transform .45s ease}
+.code-editor-card.is-active .code-line{opacity:1;transform:none;transition-delay:calc(var(--line) * 115ms)}
+.code-comment{color:#858d8a}.code-keyword{color:#795f89;font-weight:700}.code-function{color:#17211f;transition:color .55s ease,text-shadow .55s ease}.code-paren{color:#65706d}.code-function.is-highlighted{color:#087b68;text-shadow:0 0 18px rgba(8,123,104,.10)}
+.code-indent{padding-left:28px}.code-final{margin-top:13px;padding-top:15px;border-top:1px solid #e9ecea;color:#087b68;font-size:.92em}.code-bullet{display:inline-block;margin-right:9px;font-size:1.15em}.terminal-cursor{display:inline-block;width:8px;height:1.05em;margin-left:6px;background:#087b68;vertical-align:-.16em;opacity:0}.code-editor-card.is-complete .terminal-cursor{opacity:1;animation:editorCursor 1.05s steps(1,end) infinite}
+html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d2;box-shadow:0 22px 48px rgba(0,0,0,.24)}
+@keyframes editorFloat{0%,100%{translate:0 0}50%{translate:0 -3px}}
+@keyframes editorCursor{0%,48%{opacity:1}49%,100%{opacity:0}}
+@media(max-width:900px){.toolkit-layout{grid-template-columns:1fr;gap:30px}.code-editor-stage{padding:8px 0 18px}.code-editor-card{width:min(100%,600px);transform:rotate(.5deg)}}
+@media(max-width:600px){.code-editor-body{min-height:315px;padding:23px 20px;font-size:14px}.code-editor-header{padding:0 19px}.code-indent{padding-left:20px}}
+@media(prefers-reduced-motion:reduce){.code-editor-card{animation:none;transform:none}.code-line{opacity:1;transform:none;transition:none}.terminal-cursor{animation:none!important;opacity:1!important}.code-function.is-highlighted{color:#087b68;text-shadow:none}}
+
+
+/* Certifications and courses subsection in Skill Set. */
+.certifications-block{margin-top:34px;padding-top:34px;border-top:1px solid var(--line)}
+.certifications-header{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:24px}.certifications-title{margin:0;font:800 clamp(25px,3vw,34px)/1.18 Manrope;letter-spacing:-.03em;color:var(--ink)}.certifications-copy{max-width:650px;margin:9px 0 0;color:var(--muted);font-size:15px;line-height:1.65}.certifications-platforms{flex:0 0 auto;color:#087b68;font:700 12px Manrope;letter-spacing:.1em;text-transform:uppercase}
+.certifications-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.certification-card{position:relative;display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;min-height:128px;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}.certification-card:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--course-accent,#087b68)}.certification-card:hover,.certification-card:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--course-accent,#087b68) 38%,var(--line));box-shadow:var(--shadow);outline:none}.certification-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:10px;background:color-mix(in srgb,var(--course-accent,#087b68) 12%,var(--surface));color:var(--course-accent,#087b68)}.certification-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.certification-card h3{margin:1px 0 6px;font:700 17px/1.35 Manrope;color:var(--ink)}.certification-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.certification-card:nth-child(1){--course-accent:#087b68}.certification-card:nth-child(2){--course-accent:#526f8f}.certification-card:nth-child(3){--course-accent:#82566f}.certification-card:nth-child(4){--course-accent:#a65b68}.certification-card:nth-child(5){--course-accent:#7b5e87}.certification-card:nth-child(6){--course-accent:#9a7819}html[data-theme="dark"] .certifications-platforms{color:#74d2bb}
+@media(max-width:900px){.certifications-header{align-items:start;flex-direction:column;gap:10px}.certifications-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.certifications-block{margin-top:42px;padding-top:34px}.certifications-grid{grid-template-columns:1fr}.certification-card{min-height:auto}}
 </style>
 </head>
 <body id="top">
+<div class="scroll-progress" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
 <div class="theme-dock">
   <span class="theme-label" id="theme-label">Switch to dark mode</span>
@@ -474,9 +742,9 @@ html[data-theme="dark"] .site-nav.open{background:#102b30}
     </span>
   </button>
 </div>
-<header class="site-header"><a class="brand" href="#top"><span class="brand-mark">JI</span><span>Jahid Iftikar</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰</button><nav id="site-nav" class="site-nav"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#impact">Impact</a><a href="#skills">Toolkit</a><a class="nav-cta" href="#contact">Contact</a></nav></header>
+<header class="site-header"><a class="brand" href="#top"><span class="brand-mark">JI</span><span>Jahid Iftikar</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰</button><nav id="site-nav" class="site-nav"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#impact">Impact</a><a href="#skills">Skill Set</a><a class="nav-cta" href="#contact">Contact</a></nav></header>
 <main>
-<section class="hero section-shell"><div class="hero-grid"><div class="hero-copy reveal"><div class="eyebrow"><span class="status-dot"></span><span class="role-mask">Technical Writer · Instructional Designer</span></div><h1 class="quote-showcase" aria-live="polite"><span class="quote-text">Turning complex systems into clear, useful knowledge.</span></h1><p class="hero-lede">Analytical and detail-oriented Technical Writer with 8+ years of experience creating technical documentation for complex systems, products, and application user interfaces across the software, telecom, and energy sectors.</p><div class="hero-actions"><a class="button primary" href="#experience">Explore my work <span>↘</span></a><a class="button secondary" href="mailto:jahid.iftikar@gmail.com">Start a conversation</a></div><div class="contact-strip"><a href="tel:+919910475660">+91 9910475660</a><a href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com</a><a href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>DLF Phase 3, Gurugram</span></div></div><aside class="hero-card reveal"><div class="monogram">JI</div><div class="card-label">Professional snapshot</div><div class="metric"><strong>8+</strong><span>Years of<br>experience</span></div><div class="domain-row"><span>Software</span><span>Engineering</span><span>Telecom</span><span>Energy</span></div><div class="card-footer">Product Documentation · eLearning</div></aside></div></section>
+<section class="hero section-shell"><div class="hero-grid"><div class="hero-copy reveal"><div class="eyebrow"><span class="status-dot"></span><span class="role-mask">Technical Writer · Instructional Designer</span></div><h1 class="quote-showcase" aria-live="polite"><span class="quote-text">Turning complex systems into clear, useful knowledge.</span></h1><p class="hero-lede">Analytical and detail-oriented Technical Writer with 8+ years of experience creating technical documentation for complex systems, products, and application user interfaces across the software, telecom, and energy sectors.</p><div class="hero-actions"><a class="button primary" href="#experience">Explore my work <span>↘</span></a><a class="button secondary" href="mailto:jahid.iftikar@gmail.com">Start a conversation</a></div><div class="contact-strip"><a href="tel:+919910475660">+91 9910475660</a><a href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com</a><a href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>DLF Phase 3, Gurugram</span></div></div><aside class="hero-card reveal"><div class="monogram">JI</div><div class="card-label">Professional snapshot</div><div class="metric"><strong id="experience-count" aria-label="8 plus years of experience">0</strong><span>Years of<br>experience</span></div><div class="domain-row"><span>Software</span><span>Engineering</span><span>Telecom</span><span>Energy</span></div><div class="card-footer">Product Documentation · eLearning</div></aside></div></section>
 <section id="about" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">01</span><div><p class="kicker">Profile</p><h2>Clarity, built into every deliverable.</h2></div></div><div class="about-grid"><p class="large-copy reveal">Skilled in requirement analysis, topic-based authoring, Online Help development, and applying MSTP Style Guide standards.</p><div class="capability-cards reveal"><article tabindex="0"><span>01</span><h3>Technical Documentation</h3><p>Installation guides, user guides, operational manuals, release notes, whitepapers, API documentation, and engineering artifacts.</p></article><article tabindex="0"><span>02</span><h3>Content Management</h3><p>Structured authoring, Markdown, DITA-XML, Online Help, CSS, and version-control workflows.</p></article><article tabindex="0"><span>03</span><h3>eLearning</h3><p>Storyboards, eLearning content, training materials, and LMS publishing.</p></article></div></div></section>
 <section id="experience" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">02</span><div><p class="kicker">Experience</p><h2>A career across complex products and industries.</h2></div></div><div class="timeline">
 <article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Noida</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="Landis+Gyr"><img class="company-logo logo-compact" src="https://landisgyr.com/content/dam/landisgyr/logos/brand-logos/Landis-Gyr_Logo_Horizontal_Grey.png" alt="Landis+Gyr logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Landis+Gyr</span></div><p>Sr. Technical Writer</p></div><span class="industry">Energy · Smart Metering</span></div><ul><li>Created Installation and User Guides for smart metering solutions and backend infrastructure for TEPCO using Adobe Structured FrameMaker.</li><li>Documented the Head-End System migration from on-premises to Google Cloud Platform, including deployment and operational workflows.</li><li>Provided knowledge transfer sessions on Azure DevOps.</li><li>Managed ad-hoc MDMS documentation tasks, including release note and operational manual revisions.</li><li>Developed storyboards and eLearning content using Captivate and Camtasia, published on Docebo.</li></ul></div></article>
@@ -484,9 +752,9 @@ html[data-theme="dark"] .site-nav.open{background:#102b30}
 <article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Gurugram</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="Guavus, a Thales company"><img class="company-logo" src="https://www.vapor.io/wp-content/uploads/2021/10/Guavus-a-Thales-company-1.png" alt="Guavus, a Thales company logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Guavus, a Thales Company</span></div><p>Sr. Technical Writer</p></div><span class="industry">AI/ML · Software</span></div><ul><li>Created technical documents for AI/ML-driven products including Service-IQ Device Management Analytics and NWDAF.</li><li>Enhanced documentation for the SQLstream project.</li><li>Edited Flare CSS files to improve HTML output.</li><li>Used MadCap Flare, Zendesk, and GitLab for authoring, publishing, documentation management, and version control.</li></ul></div></article>
 <article class="timeline-item reveal" tabindex="0"><div class="timeline-meta"><span>Bengaluru</span></div><div class="timeline-body"><div class="role-top"><div><div class="company-logo-wrap" title="umlaut"><img class="company-logo logo-umlaut" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Umlaut_logo.svg" alt="umlaut logo" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="company-logo-fallback">Umlaut Pvt. Ltd.</span></div><p>Technical Author</p></div><span class="industry">Engineering Services</span></div><ul><li>Created Operation and Repair Manuals for aerospace systems using Arbortext Editor at client location.</li><li>Gathered insights from subject matter experts to create comprehensive content.</li><li>Analyzed specification sheets, technical drawings, and Bills of Materials to develop engineering artifacts.</li><li>Conducted proofreading and quality reviews for accuracy, consistency, and standards compliance.</li></ul></div></article>
 </div></section>
-<section id="impact" class="impact-section section-pad"><div class="section-shell"><div class="section-heading light reveal"><span class="section-index">03</span><div><p class="kicker">Key achievements</p><h2>Recognition earned through meaningful impact.</h2></div></div><div class="achievement-grid"><article class="achievement reveal" tabindex="0"><div class="achievement-no">01</div><h3>Project Excellence Award</h3><p>Received at Landis+Gyr for timely delivery of Edge Intelligence and Next-Gen AMI documentation across the APAC region.</p></article><article class="achievement reveal" tabindex="0"><div class="achievement-no">02</div><h3>Process Transformation</h3><p>Recognized for revamping documentation processes across multiple projects through standardized frameworks at Amantya Technologies.</p></article><article class="achievement reveal" tabindex="0"><div class="achievement-no">03</div><h3>Customer Appreciation</h3><p>Appreciated by NAM customers for creating eLearning content and training materials that improved product understanding and the learner experience.</p></article></div></div></section>
-<section id="skills" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">04</span><div><p class="kicker">Toolkit</p><h2>Tools, technologies, and skills that power my work.</h2></div></div><div class="skills-cloud reveal" aria-label="Skills"><span>FrameMaker</span><span>MadCap Flare</span><span>RoboHelp</span><span>Markdown</span><span>DITA</span><span>XML</span><span>VS Code</span><span>Confluence</span><span>Azure DevOps</span><span>Jira</span><span>SAP</span><span>SourceTree</span><span>GitLab</span><span>White Paper</span><span>MS Office</span><span>API Docs</span><span>Captivate</span><span>Camtasia</span><span>eLearning</span><span>draw.io</span></div><div class="language-grid reveal"><div><p>English</p><span>Full Professional Proficiency</span></div><div><p>Hindi</p><span>Full Professional Proficiency</span></div><div><p>Bengali</p><span>Native</span></div></div></section>
-<section id="contact" class="contact-section"><div class="section-shell contact-inner reveal"><p class="kicker">Let’s connect</p><h2>Need complex information made clear?</h2><div class="contact-actions"><a class="button bright" href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com ↗</a><a class="contact-icon-link linkedin-button" href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noopener noreferrer" aria-label="View Jahid Iftikar on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.04H3.54V8.98H7.1v11.47z"/></svg></a><a class="text-link phone-link" href="tel:+919910475660"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg><span>+91 9910475660</span></a></div></div></section></main>
+<section id="impact" class="impact-section section-pad"><div class="section-shell"><div class="section-heading light reveal"><span class="section-index">03</span><div><p class="kicker">Key achievements</p><h2>Recognition earned through meaningful impact.</h2></div></div><div class="achievement-grid"><article class="achievement reveal" tabindex="0"><div class="achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v5a4 4 0 0 1-8 0V3Z"/><path d="M8 5H5v2a4 4 0 0 0 4 4M16 5h3v2a4 4 0 0 1-4 4M12 12v4M8 21h8M9 16h6v5H9z"/></svg></div><h3>Project Excellence Award</h3><p>Received at Landis+Gyr for timely delivery of Edge Intelligence and Next-Gen AMI documentation across the APAC region.</p></article><article class="achievement reveal" tabindex="0"><div class="achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="4"/><path d="m10.5 12 1 1 2-2"/></svg></div><h3>Process Transformation</h3><p>Recognized for revamping documentation processes across multiple projects through standardized frameworks at Amantya Technologies.</p></article><article class="achievement reveal" tabindex="0"><div class="achievement-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 14.6 8l5.1 1.1-3.5 3.9.5 5.2-4.7-2.1-4.7 2.1.5-5.2-3.5-3.9L9.4 8 12 3.5Z"/><path d="M9.2 12.2 11 14l3.8-4"/></svg></div><h3>Customer Appreciation</h3><p>Appreciated by NAM customers for creating eLearning content and training materials that improved product understanding and the learner experience.</p></article></div></div></section>
+<section id="skills" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">04</span><div><p class="kicker">Skill Set</p><h2>Tools, technologies, and skills that power my work.</h2></div></div><div class="toolkit-layout"><div class="toolkit-content"><div class="skills-cloud reveal" aria-label="Skills"><span>FrameMaker</span><span>MadCap Flare</span><span>RoboHelp</span><span>Markdown</span><span>DITA</span><span>XML</span><span>VS Code</span><span>Confluence</span><span>Azure DevOps</span><span>Jira</span><span>SAP</span><span>SourceTree</span><span>GitLab</span><span>White Paper</span><span>MS Office</span><span>API Docs</span><span>Captivate</span><span>Camtasia</span><span>eLearning</span><span>draw.io</span></div></div><div class="code-editor-stage reveal"><div class="code-editor-card" aria-label="Animated documentation workflow code sample"><div class="code-editor-header"><span>documentation.py</span><span class="code-editor-terminal" aria-hidden="true">&gt;_</span></div><div class="code-editor-body"><span class="code-line code-comment" style="--line:0"># From information to understanding.</span><span class="code-line" style="--line:1"><span class="code-keyword">while</span> creating:</span><span class="code-line code-indent" style="--line:2"><span class="code-function">analyze</span><span class="code-paren">()</span></span><span class="code-line code-indent" style="--line:3"><span class="code-function">document</span><span class="code-paren">()</span></span><span class="code-line code-indent" style="--line:4"><span class="code-function">design</span><span class="code-paren">()</span></span><span class="code-line code-indent" style="--line:5"><span class="code-function">simplify</span><span class="code-paren">()</span></span><span class="code-line code-indent" style="--line:6"><span class="code-function">improve</span><span class="code-paren">()</span></span><span class="code-line code-final" style="--line:7"><span class="code-bullet">•</span>Docs + Learning + AI<span class="terminal-cursor" aria-hidden="true"></span></span></div></div></div></div><div class="certifications-block reveal" aria-labelledby="certifications-title"><div class="certifications-header"><div><h3 class="certifications-title" id="certifications-title">Certifications &amp; Courses</h3><p class="certifications-copy">Continuous learning across technical documentation, cloud, APIs, authoring tools, and instructional design.</p></div><div class="certifications-platforms">Udemy · LinkedIn Learning · Coursera</div></div><div class="certifications-grid"><article class="certification-card" tabindex="0"><div class="certification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div><div><h3>Linux</h3><p>Command-line concepts, file systems, permissions, and foundational administration.</p></div></article><article class="certification-card" tabindex="0"><div class="certification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.4 1.5A3.3 3.3 0 0 0 7 18Z"/></svg></div><div><h3>AWS Basics</h3><p>Core cloud concepts, services, infrastructure, and foundational AWS terminology.</p></div></article><article class="certification-card" tabindex="0"><div class="certification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m10 9 5 3-5 3z"/></svg></div><div><h3>Articulate 360</h3><p>Authoring interactive digital learning experiences and structured course content.</p></div></article><article class="certification-card" tabindex="0"><div class="certification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 6l-4 12"/></svg></div><div><h3>Swagger Editor Beginner's Overview</h3><p>Introduction to API definitions, OpenAPI structure, and documentation workflows.</p></div></article><article class="certification-card" tabindex="0"><div class="certification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg></div><div><h3>API Documentation</h3><p>Writing clear API references, endpoint descriptions, parameters, and examples.</p></div></article><article class="certification-card" tabindex="0"><div class="certification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 17h14"/><path d="m8 4-3 3 3 3M16 14l3 3-3 3"/></svg></div><div><h3>Continuous Technical Learning</h3><p>Additional courses in documentation, cloud, APIs, authoring, and instructional design.</p></div></article></div></div></section>
+<section id="contact" class="contact-section"><div class="section-shell contact-inner reveal"><div class="contact-layout"><div class="contact-intro"><p class="kicker">Let’s connect</p><h2>Need complex information made clear?</h2><div class="contact-actions"><a class="button bright" href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com ↗</a><a class="contact-icon-link linkedin-button" href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noopener noreferrer" aria-label="View Jahid Iftikar on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.04H3.54V8.98H7.1v11.47z"/></svg></a><a class="text-link phone-link" href="tel:+919910475660"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg><span>+91 9910475660</span></a></div></div><div class="contact-form-card"><form class="contact-form" id="contact-form"><div class="contact-form-row"><div class="contact-field"><label for="contact-name">Name</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div><div class="contact-field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div></div><div class="contact-field"><label for="contact-subject">Subject</label><input id="contact-subject" name="subject" type="text" placeholder="Documentation opportunity" required></div><div class="contact-field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" placeholder="Tell me about the challenge..." required></textarea></div><div class="contact-form-footer"><button class="compose-email" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg><span>Compose email</span></button><p class="form-note">This opens your default email application. No data is stored.</p></div></form></div></div></div></section></main>
 <footer class="footer section-shell"><p>Jahid Iftikar · Technical Writer | Instructional Designer</p><a class="back-to-top" href="#top" aria-label="Back to top">Back to top ↑</a></footer>
 <script>
 const themeToggle=document.getElementById('theme-toggle');
@@ -511,16 +779,47 @@ themeToggle.addEventListener('click',()=>{
 });
 syncThemeControl();
 
+const experienceCount=document.getElementById('experience-count');
+if(experienceCount){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    experienceCount.textContent='8+';
+  }else{
+    const finalExperience=8;
+    const duration=1200;
+    const start=performance.now();
+    function updateExperienceCount(now){
+      const progress=Math.min((now-start)/duration,1);
+      const eased=1-Math.pow(1-progress,3);
+      const value=Math.min(finalExperience,Math.floor(eased*(finalExperience+1)));
+      experienceCount.textContent=progress===1?`${finalExperience}+`:String(value);
+      if(progress<1)requestAnimationFrame(updateExperienceCount);
+    }
+    requestAnimationFrame(updateExperienceCount);
+  }
+}
+
 const quotes=[
-{text:"Turning complex systems into clear, useful knowledge.",gradient:"linear-gradient(90deg,#102b30 0%,#0f665f 34%,#394a70 68%,#254a50 100%)"},
-{text:"Designing learning that makes difficult ideas easier.",gradient:"linear-gradient(90deg,#0d2b31 0%,#3d456e 35%,#176663 70%,#24454b 100%)"},
-{text:"Transforming product expertise into confident user action.",gradient:"linear-gradient(90deg,#15343a 0%,#1b596d 32%,#315070 66%,#11655e 100%)"},
-{text:"Creating content where clarity meets purpose.",gradient:"linear-gradient(90deg,#102b30 0%,#31516c 34%,#17645e 68%,#493f61 100%)"}
+{primary:"Creating content where",accent:"clarity meets purpose."},
+{primary:"Turning complex systems into",accent:"clear, useful knowledge."},
+{primary:"Transforming product expertise into",accent:"confident user action."},
+{primary:"Designing learning that makes",accent:"difficult ideas easier."},
+{primary:"Using AI to make knowledge",accent:"clearer and smarter."},
+{primary:"Simplifying technology through",accent:"content and intelligence."},
+{primary:"Bridging technology,",accent:"intelligence, and learning."},
+{primary:"Creating content that makes technology",accent:"easier to learn."},
+{primary:"Designing learning experiences",accent:"powered by AI."}
 ];
 const target=document.querySelector('.quote-text');let qi=0,ci=0,typingTimer,rotationTimer;
-function typeQuote(){const quote=quotes[qi];target.style.setProperty('--quote-gradient',quote.gradient);target.textContent=quote.text.slice(0,ci);if(ci<quote.text.length){ci++;typingTimer=setTimeout(typeQuote,24)}else{rotationTimer=setTimeout(changeQuote,1700)}}
-function changeQuote(){target.classList.add('is-changing');setTimeout(()=>{qi=(qi+1)%quotes.length;ci=0;target.textContent="";target.classList.remove('is-changing');typeQuote()},300)}
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.textContent=quotes[0].text;target.style.setProperty('--quote-gradient',quotes[0].gradient)}else{target.textContent="";typeQuote()}
+function renderQuote(quote,visibleChars){
+  const primaryLength=quote.primary.length;
+  const primaryText=quote.primary.slice(0,Math.min(visibleChars,primaryLength));
+  const separator=visibleChars>primaryLength?' ':'';
+  const accentText=quote.accent.slice(0,Math.max(0,visibleChars-primaryLength-1));
+  target.innerHTML=`<span class="quote-primary">${primaryText}</span>${separator}<span class="quote-accent">${accentText}</span>`;
+}
+function typeQuote(){const quote=quotes[qi];const fullLength=quote.primary.length+1+quote.accent.length;renderQuote(quote,ci);if(ci<fullLength){ci++;typingTimer=setTimeout(typeQuote,24)}else{rotationTimer=setTimeout(changeQuote,1700)}}
+function changeQuote(){target.classList.add('is-changing');setTimeout(()=>{qi=(qi+1)%quotes.length;ci=0;target.innerHTML="";target.classList.remove('is-changing');typeQuote()},300)}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderQuote(quotes[0],quotes[0].primary.length+1+quotes[0].accent.length)}else{target.innerHTML="";typeQuote()}
 const cursorGlow=document.querySelector('.cursor-glow');
 if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.addEventListener('pointermove',e=>{cursorGlow.style.setProperty('--cursor-x',e.clientX+'px');cursorGlow.style.setProperty('--cursor-y',e.clientY+'px');cursorGlow.classList.add('active')});document.addEventListener('pointerleave',()=>cursorGlow.classList.remove('active'))}
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
@@ -535,5 +834,67 @@ backToTop.addEventListener('click',event=>{
 });
 const contactNav=document.querySelector('.nav-cta[href="#contact"]');contactNav.addEventListener('click',()=>{contactNav.classList.remove('contact-click');void contactNav.offsetWidth;contactNav.classList.add('contact-click');setTimeout(()=>contactNav.classList.remove('contact-click'),450)});
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.site-nav');menu.addEventListener('click',()=>{nav.classList.toggle('open');menu.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+// Staggered word reveal for key section statements.
+const motionHeadings=[
+  document.querySelector('#about .section-heading h2'),
+  document.querySelector('#experience .section-heading h2'),
+  document.querySelector('#impact .section-heading h2'),
+  document.querySelector('#skills .section-heading h2'),
+  document.querySelector('#contact h2')
+].filter(Boolean);
+motionHeadings.forEach(heading=>{
+  const words=heading.textContent.trim().split(/\s+/);
+  heading.setAttribute('aria-label',heading.textContent.trim());
+  heading.classList.add('motion-heading');
+  heading.innerHTML=words.map((word,index)=>`<span class="motion-word" aria-hidden="true" style="--word-index:${index}">${word}</span>`).join(' ');
+});
+const motionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('motion-visible');motionObserver.unobserve(entry.target)}
+}),{threshold:.35});
+motionHeadings.forEach(heading=>motionObserver.observe(heading));
+document.querySelector('.contact-inner')?.classList.add('motion-ready');
+const contactForm=document.getElementById('contact-form');
+contactForm?.addEventListener('submit',event=>{
+  event.preventDefault();
+  if(!contactForm.reportValidity())return;
+  const data=new FormData(contactForm);
+  const name=String(data.get('name')||'').trim();
+  const email=String(data.get('email')||'').trim();
+  const subject=String(data.get('subject')||'').trim();
+  const message=String(data.get('message')||'').trim();
+  const body=`Hello Jahid,\n\n${message}\n\nRegards,\n${name}\n${email}`;
+  window.location.href=`mailto:jahid.iftikar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+
+// Toolkit code editor: reveal once, then cycle a restrained teal highlight.
+const codeEditor=document.querySelector('.code-editor-card');
+if(codeEditor){
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const functions=[...codeEditor.querySelectorAll('.code-function')];
+  let highlightIndex=0;
+  const setHighlight=()=>{
+    functions.forEach((item,index)=>item.classList.toggle('is-highlighted',index===highlightIndex));
+    highlightIndex=(highlightIndex+1)%functions.length;
+  };
+  if(reducedMotion){
+    codeEditor.classList.add('is-active','is-complete');
+    functions.at(-1)?.classList.add('is-highlighted');
+  }else{
+    const codeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      codeEditor.classList.add('is-active');
+      setTimeout(()=>{
+        codeEditor.classList.add('is-complete');
+        setHighlight();
+        setInterval(setHighlight,1900);
+      },1450);
+      codeObserver.unobserve(codeEditor);
+    }),{threshold:.35});
+    codeObserver.observe(codeEditor);
+  }
+}
+
 </script>
 </body></html>
