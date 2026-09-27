@@ -826,6 +826,15 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
   }
   body{padding-top:62px;}
 }
+
+/* Mobile viewport-width fix: prevent horizontal page overflow without changing desktop layout. */
+@media (max-width: 1024px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden;}
+  .site-header{width:100%;max-width:100%;}
+  main,.hero,.hero-grid,.hero-copy,.section-shell{min-width:0;max-width:100%;}
+  .quote-showcase,.quote-text,.hero-lede{max-width:100%;overflow-wrap:anywhere;}
+  .hero-actions,.contact-strip{max-width:100%;}
+}
 </style>
 </head>
 <body id="top">
