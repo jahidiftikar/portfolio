@@ -814,6 +814,18 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
 @media (max-width: 600px){
   .site-header .theme-dock{right:18px;}
 }
+
+/* Mobile-only lock: keep the header and its theme switch stationary while scrolling. */
+@media (max-width: 1024px){
+  .site-header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:90;
+  }
+  body{padding-top:62px;}
+}
 </style>
 </head>
 <body id="top">
