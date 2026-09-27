@@ -797,28 +797,37 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
 @media(prefers-reduced-motion:reduce){.capability-card-inner{transition:none}.capability-flip-card:hover .capability-card-inner,.capability-flip-card:focus-visible .capability-card-inner{transform:none}.capability-card-front{display:none}.capability-card-back{transform:none}}
 
 
-/* Mobile-only theme switch position fix. Keep the switch below the header and menu. */
+
+/* Mobile-only theme switch position fix: anchor directly below the header. */
 @media (max-width: 1024px){
-  .theme-dock{
-    top:82px;
-    right:14px;
-    z-index:21;
+  .site-header .theme-dock{
+    position:absolute;
+    top:calc(100% + 16px);
+    right:24px;
+    left:auto;
+    z-index:30;
+    display:flex;
+    visibility:visible;
+    opacity:1;
   }
+}
+@media (max-width: 600px){
+  .site-header .theme-dock{right:18px;}
 }
 </style>
 </head>
 <body id="top">
 <div class="scroll-progress" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
-<div class="theme-dock">
+
+<header class="site-header"><div class="theme-dock">
   <span class="theme-label" id="theme-label">Switch to dark mode</span>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-describedby="theme-label" title="Switch to dark mode">
     <span class="theme-toggle-track" aria-hidden="true">
       <span class="theme-icon sun">☀</span><span class="theme-icon moon">☾</span><span class="theme-thumb"></span>
     </span>
   </button>
-</div>
-<header class="site-header"><a class="brand" href="#top"><span class="brand-mark">JI</span><span>Jahid Iftikar</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰</button><nav id="site-nav" class="site-nav"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#impact">Impact</a><a href="#skills">Skill Set</a><a class="nav-cta" href="#contact">Contact</a></nav></header>
+</div><a class="brand" href="#top"><span class="brand-mark">JI</span><span>Jahid Iftikar</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰</button><nav id="site-nav" class="site-nav"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#impact">Impact</a><a href="#skills">Skill Set</a><a class="nav-cta" href="#contact">Contact</a></nav></header>
 <main>
 <section class="hero section-shell"><div class="hero-grid"><div class="hero-copy reveal"><div class="eyebrow"><span class="status-dot"></span><span class="role-mask">Technical Writer · Instructional Designer</span></div><h1 class="quote-showcase" aria-live="polite"><span class="quote-text">Turning complex systems into clear, useful knowledge.</span></h1><p class="hero-lede">Analytical and detail-oriented Technical Writer with 8+ years of experience creating technical documentation for complex systems, products, and application user interfaces across the software, telecom, and energy sectors.</p><div class="hero-actions"><a class="button primary" href="#experience">Explore my work <span>↘</span></a><a class="button secondary" href="mailto:jahid.iftikar@gmail.com">Start a conversation</a></div><div class="contact-strip"><a href="tel:+919910475660">+91 9910475660</a><a href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com</a><a href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noreferrer">LinkedIn ↗</a><span>DLF Phase 3, Gurugram</span></div></div><aside class="hero-card reveal"><div class="monogram">JI</div><div class="card-label">Professional snapshot</div><div class="metric"><strong id="experience-count" aria-label="8 plus years of experience">0</strong><span>Years of<br>experience</span></div><div class="domain-row"><span>Software</span><span>Engineering</span><span>Telecom</span><span>Energy</span></div><div class="card-footer">Product Documentation · eLearning</div></aside></div></section>
 <section id="about" class="section-shell section-pad"><div class="section-heading reveal"><span class="section-index">01</span><div><p class="kicker">Profile</p><h2>Clarity, built into every deliverable.</h2></div></div><div class="about-grid"><p class="large-copy reveal">Skilled in requirement analysis, topic-based authoring, Online Help development, and applying MSTP Style Guide standards.</p><div class="capability-cards reveal">
