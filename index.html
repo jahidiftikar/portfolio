@@ -796,6 +796,20 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
 @media(hover:none){.capability-flip-card:active .capability-card-inner{transform:rotateY(180deg)}}
 @media(prefers-reduced-motion:reduce){.capability-card-inner{transition:none}.capability-flip-card:hover .capability-card-inner,.capability-flip-card:focus-visible .capability-card-inner{transform:none}.capability-card-front{display:none}.capability-card-back{transform:none}}
 
+
+/* Mobile-only fix: keep the theme switch aligned inside the header. */
+@media (max-width: 1024px){
+  .site-header{padding-right:118px}
+  .theme-dock{
+    position:fixed;
+    top:15px;
+    right:64px;
+  }
+}
+@media (max-width: 600px){
+  .site-header{padding-right:112px}
+  .theme-dock{right:58px}
+}
 </style>
 </head>
 <body id="top">
