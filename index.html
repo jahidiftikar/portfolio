@@ -797,13 +797,12 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
 @media(prefers-reduced-motion:reduce){.capability-card-inner{transition:none}.capability-flip-card:hover .capability-card-inner,.capability-flip-card:focus-visible .capability-card-inner{transform:none}.capability-card-front{display:none}.capability-card-back{transform:none}}
 
 
-/* Mobile-only theme switch position fix. */
-@media (max-width:1024px){
+/* Mobile-only theme switch position fix. Keep the switch below the header and menu. */
+@media (max-width: 1024px){
   .theme-dock{
-    position:fixed;
-    top:76px;
+    top:82px;
     right:14px;
-    z-index:30;
+    z-index:21;
   }
 }
 </style>
