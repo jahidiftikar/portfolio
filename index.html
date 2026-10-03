@@ -1071,7 +1071,9 @@ html[data-theme="dark"] #impact .achievement:nth-child(3) .achievement-accent{co
 
 
 /* Slightly stronger SVG strokes for Key Achievements icons only. */
-#impact .achievement-icon svg{stroke-width:2.65;}
+#impact .achievement-icon svg{stroke-width:3.2;}
+/* Lift only the small head in the Customer Appreciation icon. */
+#impact .achievement:nth-child(3) .achievement-icon svg circle{transform:translateY(-1.5px);transform-box:fill-box;transform-origin:center;}
 
 
 /* Mobile menu icon: smoothly morphs between hamburger and close states. */
