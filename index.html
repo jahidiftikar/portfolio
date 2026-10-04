@@ -733,8 +733,8 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
 
 /* Certifications and courses subsection in Skill Set. */
 .certifications-block{margin-top:74px;padding-top:34px;border-top:1px solid var(--line)}
-.certifications-header{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:24px}.certifications-title{display:inline-flex;align-items:center;gap:12px;margin:0;font:800 clamp(25px,3vw,34px)/1.18 Manrope;letter-spacing:-.03em;color:var(--ink)}
-.certifications-title-icon{display:block;width:38px;height:38px;object-fit:contain;flex:0 0 auto}.certifications-copy{max-width:650px;margin:9px 0 0;color:var(--muted);font-size:15px;line-height:1.65}.certifications-platforms{flex:0 0 auto;color:#087b68;font:700 12px Manrope;letter-spacing:.1em;text-transform:uppercase}
+.certifications-header{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:24px}.certifications-title{display:inline-flex;align-items:center;gap:12px;margin:0;font:800 clamp(23px,2.7vw,31px)/1.18 Manrope;letter-spacing:-.03em;color:var(--ink)}
+.certifications-title-icon{display:block;width:34px;height:34px;object-fit:contain;flex:0 0 auto}.certifications-copy{max-width:650px;margin:9px 0 0;color:var(--muted);font-size:15px;line-height:1.65}.certifications-platforms{flex:0 0 auto;color:#087b68;font:700 12px Manrope;letter-spacing:.1em;text-transform:uppercase}
 .certifications-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.certification-card{position:relative;display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;min-height:128px;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}.certification-card:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--course-accent,#087b68)}.certification-card:hover,.certification-card:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--course-accent,#087b68) 38%,var(--line));box-shadow:var(--shadow);outline:none}.certification-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:10px;background:color-mix(in srgb,var(--course-accent,#087b68) 12%,var(--surface));color:var(--course-accent,#087b68)}.certification-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.certification-card h3{margin:1px 0 6px;font:700 17px/1.35 Manrope;color:var(--ink)}.certification-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.certification-card:nth-child(1){--course-accent:#087b68}.certification-card:nth-child(2){--course-accent:#526f8f}.certification-card:nth-child(3){--course-accent:#82566f}.certification-card:nth-child(4){--course-accent:#a65b68}.certification-card:nth-child(5){--course-accent:#7b5e87}.certification-card:nth-child(6){--course-accent:#9a7819}html[data-theme="dark"] .certifications-platforms{color:#74d2bb}
 
 /* Seamless learning statement marquee. Inherits the existing copy typography and color. */
@@ -870,6 +870,11 @@ html[data-theme="dark"] .expertise-card:hover h3,html[data-theme="dark"] .expert
 html[data-theme="dark"] .expertise-card:hover .expertise-tags span,html[data-theme="dark"] .expertise-card:focus-visible .expertise-tags span{color:var(--tag-ink,#74d2bb);background:var(--tag-bg,rgba(81,201,173,.10));border-color:var(--tag-border,rgba(81,201,173,.16))}
 /* Soft randomized Expertise tag colors; existing transitions and effects remain unchanged. */
 .expertise-card:hover .expertise-tags span,.expertise-card:focus-visible .expertise-tags span{color:var(--tag-ink,#087b68);background:var(--tag-bg,rgba(8,123,104,.08));border-color:var(--tag-border,rgba(8,123,104,.12))}
+/* Keep the randomized palette visibly active after the first touch on mobile. */
+@media(hover:none){
+  .expertise-card.is-touch-active .expertise-tags span{color:var(--tag-ink,#087b68);background:var(--tag-bg,rgba(8,123,104,.08));border-color:var(--tag-border,rgba(8,123,104,.12))}
+  html[data-theme="dark"] .expertise-card.is-touch-active .expertise-tags span{color:var(--tag-ink,#74d2bb);background:var(--tag-bg,rgba(81,201,173,.10));border-color:var(--tag-border,rgba(81,201,173,.16))}
+}
 @media(max-width:900px){.expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.expertise-card{min-height:360px}}
 @media(max-width:600px){.expertise-section{padding-top:8px}.expertise-heading{margin-bottom:30px}.expertise-grid{grid-template-columns:1fr}.expertise-card{min-height:auto;padding:25px}.expertise-heading h2{font-size:34px}}
 @media(hover:none){.expertise-card:hover{transform:none}.expertise-card:hover .expertise-icon{transform:none}}
@@ -1070,6 +1075,14 @@ html[data-theme="dark"] #impact .achievement:nth-child(3) .achievement-accent{co
 }
 
 
+/* Desktop-only thickness correction for Experience and Impact statement underlines. */
+@media (min-width:1025px){
+  #experience .motion-heading::after,
+  #impact .motion-heading::after,
+  #skills .motion-heading::after{height:3px;}
+}
+/* Slightly thinner underline accents for all Key Achievements cards. */
+#impact .achievement-accent{height:3px;}
 /* Slightly stronger SVG strokes for Key Achievements icons only. */
 #impact .achievement-icon svg{stroke-width:3.2;}
 /* Lift only the small head in the Customer Appreciation icon. */
@@ -1242,8 +1255,8 @@ if(experienceCount){
     function updateExperienceCount(now){
       const progress=Math.min((now-start)/duration,1);
       const eased=1-Math.pow(1-progress,3);
-      const value=Math.min(finalExperience,Math.floor(eased*(finalExperience+1)));
-      experienceCount.textContent=progress===1?`${finalExperience}+`:String(value);
+      const value=Math.max(1,Math.min(finalExperience,Math.floor(eased*(finalExperience+1))));
+      experienceCount.textContent=`${value}+`;
       if(progress<1)requestAnimationFrame(updateExperienceCount);
     }
     requestAnimationFrame(updateExperienceCount);
@@ -1331,7 +1344,15 @@ function shuffleExpertisePalette(card){
  const colors=[...expertiseTagPalettes].sort(()=>Math.random()-.5);
  tags.forEach((tag,index)=>{const color=colors[index%colors.length];tag.style.setProperty('--tag-bg',color.bg);tag.style.setProperty('--tag-ink',color.ink);tag.style.setProperty('--tag-border',color.border);});
 }
-document.querySelectorAll('.expertise-card').forEach(card=>{card.addEventListener('mouseenter',()=>shuffleExpertisePalette(card));card.addEventListener('focusin',()=>shuffleExpertisePalette(card));});
+document.querySelectorAll('.expertise-card').forEach(card=>{
+  card.addEventListener('mouseenter',()=>shuffleExpertisePalette(card));
+  card.addEventListener('focusin',()=>shuffleExpertisePalette(card));
+  card.addEventListener('pointerdown',event=>{
+    if(event.pointerType==='mouse')return;
+    shuffleExpertisePalette(card);
+    card.classList.add('is-touch-active');
+  },{passive:true});
+});
 
 // Toolkit code editor: reveal once, then cycle a restrained teal highlight.
 const codeEditor=document.querySelector('.code-editor-card');
