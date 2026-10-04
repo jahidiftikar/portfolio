@@ -1349,6 +1349,9 @@ document.querySelectorAll('.expertise-card').forEach(card=>{
   card.addEventListener('focusin',()=>shuffleExpertisePalette(card));
   card.addEventListener('pointerdown',event=>{
     if(event.pointerType==='mouse')return;
+    document.querySelectorAll('.expertise-card.is-touch-active').forEach(activeCard=>{
+      if(activeCard!==card)activeCard.classList.remove('is-touch-active');
+    });
     shuffleExpertisePalette(card);
     card.classList.add('is-touch-active');
   },{passive:true});
