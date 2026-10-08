@@ -1397,6 +1397,14 @@ document.querySelectorAll('.certification-card').forEach(card=>{
     card.classList.add('is-touch-active');
   },{passive:true});
 });
+// Clear mobile touch animations when the user taps outside the interactive cards.
+document.addEventListener('pointerdown',event=>{
+  if(event.pointerType==='mouse')return;
+  if(event.target.closest('.skills-cloud span, .certification-card'))return;
+  document.querySelectorAll('.skills-cloud span.is-touch-active, .certification-card.is-touch-active').forEach(active=>{
+    active.classList.remove('is-touch-active');
+  });
+},{passive:true});
 // Toolkit code editor: reveal once, then cycle a restrained teal highlight.
 const codeEditor=document.querySelector('.code-editor-card');
 if(codeEditor){
