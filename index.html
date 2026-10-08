@@ -893,9 +893,17 @@ html[data-theme="dark"] .expertise-card:hover .expertise-tags span,html[data-the
 .expertise-card:hover .expertise-tags span,.expertise-card:focus-visible .expertise-tags span{color:var(--tag-ink,#087b68);background:var(--tag-bg,rgba(8,123,104,.08));border-color:var(--tag-border,rgba(8,123,104,.12))}
 /* Keep the randomized palette visibly active after the first touch on mobile. */
 @media(hover:none){
+  .expertise-card.is-touch-active{border-color:rgba(8,123,104,.50);box-shadow:0 22px 48px rgba(27,50,46,.15),0 0 0 1px rgba(8,123,104,.08)}
+  .expertise-card.is-touch-active:before{transform:scaleX(1)}
+  .expertise-card.is-touch-active .expertise-icon{transform:translateY(-4px) rotate(-5deg) scale(1.08);background:#066b5b;box-shadow:0 16px 30px rgba(8,123,104,.27);animation:expertiseIconPop .42s cubic-bezier(.22,1,.36,1)}
+  .expertise-card.is-touch-active h3{color:#087b68;transform:translateX(4px)}
   .expertise-card.is-touch-active .expertise-tags span{color:var(--tag-ink,#087b68);background:var(--tag-bg,rgba(8,123,104,.08));border-color:var(--tag-border,rgba(8,123,104,.12))}
+  html[data-theme="dark"] .expertise-card.is-touch-active{border-color:rgba(81,201,173,.48);box-shadow:0 24px 54px rgba(0,0,0,.34),0 0 0 1px rgba(81,201,173,.08)}
+  html[data-theme="dark"] .expertise-card.is-touch-active .expertise-icon{background:#51c9ad}
+  html[data-theme="dark"] .expertise-card.is-touch-active h3{color:#74d2bb}
   html[data-theme="dark"] .expertise-card.is-touch-active .expertise-tags span{color:var(--tag-ink,#74d2bb);background:var(--tag-bg,rgba(81,201,173,.10));border-color:var(--tag-border,rgba(81,201,173,.16))}
 }
+@keyframes expertiseIconPop{0%{transform:translateY(0) rotate(0) scale(.92)}65%{transform:translateY(-5px) rotate(-6deg) scale(1.11)}100%{transform:translateY(-4px) rotate(-5deg) scale(1.08)}}
 @media(max-width:900px){.expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.expertise-card{min-height:360px}}
 @media(max-width:600px){.expertise-section{padding-top:8px}.expertise-heading{margin-bottom:30px}.expertise-grid{grid-template-columns:1fr}.expertise-card{min-height:auto;padding:25px}.expertise-heading h2{font-size:34px}}
 @media(hover:none){.expertise-card:hover{transform:none}.expertise-card:hover .expertise-icon{transform:none}}
@@ -1378,6 +1386,12 @@ document.querySelectorAll('.expertise-card').forEach(card=>{
   },{passive:true});
 });
 
+// Clear the active Expertise animation when tapping outside an Expertise card.
+document.addEventListener('pointerdown',event=>{
+  if(event.pointerType==='mouse')return;
+  if(event.target.closest('.expertise-card'))return;
+  document.querySelectorAll('.expertise-card.is-touch-active').forEach(card=>card.classList.remove('is-touch-active'));
+},{passive:true});
 // Mobile touch interactions: keep Skill Set dots and certification icons active while scrolling.
 document.querySelectorAll('.skills-cloud span').forEach(skill=>{
   skill.addEventListener('pointerdown',event=>{
