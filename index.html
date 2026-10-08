@@ -735,7 +735,10 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
 .skills-cloud span:before{transform:translateY(-50%) scale(1);transform-origin:center;transition:transform .34s cubic-bezier(.22,1,.36,1),box-shadow .34s ease}
 .skills-cloud span:hover:before,.skills-cloud span:focus-visible:before{transform:translateY(-50%) scale(1.12);box-shadow:0 0 0 4px color-mix(in srgb,var(--chip) 12%,transparent),0 0 11px color-mix(in srgb,var(--chip) 24%,transparent);animation:skillDotPulse .58s cubic-bezier(.22,1,.36,1)}
 @keyframes skillDotPulse{0%{transform:translateY(-50%) scale(1)}48%{transform:translateY(-50%) scale(1.34)}100%{transform:translateY(-50%) scale(1.12)}}
-@media(hover:none){.skills-cloud span:hover:before{transform:translateY(-50%) scale(1);box-shadow:none;animation:none}}
+@media(hover:none){
+  .skills-cloud span:hover:before{transform:translateY(-50%) scale(1);box-shadow:none;animation:none}
+  .skills-cloud span.is-touch-active:before{transform:translateY(-50%) scale(1.12);box-shadow:0 0 0 4px color-mix(in srgb,var(--chip) 12%,transparent),0 0 11px color-mix(in srgb,var(--chip) 24%,transparent);animation:skillDotPulse .58s cubic-bezier(.22,1,.36,1)}
+}
 @media(prefers-reduced-motion:reduce){.skills-cloud span:before{transition:none}.skills-cloud span:hover:before,.skills-cloud span:focus-visible:before{transform:translateY(-50%) scale(1);box-shadow:none;animation:none}}
 /* Certifications and courses subsection in Skill Set. */
 .certifications-block{margin-top:74px;padding-top:34px;border-top:1px solid var(--line)}
@@ -747,7 +750,12 @@ html[data-theme="dark"] .code-editor-card{background:#f8f7f3;border-color:#cfd5d
   .certification-icon svg{transform-origin:center;transition:transform .42s cubic-bezier(.22,1,.36,1),stroke-width .3s ease}
   .certification-card:hover .certification-icon,.certification-card:focus-visible .certification-icon{transform:translateY(-3px) scale(1.045);box-shadow:0 9px 18px color-mix(in srgb,var(--course-accent,#087b68) 25%,transparent),0 3px 7px rgba(23,38,36,.12)}
   .certification-card:hover .certification-icon svg,.certification-card:focus-visible .certification-icon svg{transform:scale(1.025);stroke-width:2}
-  @media(hover:none){.certification-card:hover .certification-icon,.certification-card:hover .certification-icon svg{transform:none;box-shadow:none}}
+  @media(hover:none){
+  .certification-card:hover .certification-icon,.certification-card:hover .certification-icon svg{transform:none;box-shadow:none}
+  .certification-card.is-touch-active .certification-icon{transform:translateY(-3px) scale(1.045);box-shadow:0 9px 18px color-mix(in srgb,var(--course-accent,#087b68) 25%,transparent),0 3px 7px rgba(23,38,36,.12);animation:certificationIconPop .42s cubic-bezier(.22,1,.36,1)}
+  .certification-card.is-touch-active .certification-icon svg{transform:scale(1.025);stroke-width:2}
+}
+@keyframes certificationIconPop{0%{transform:translateY(0) scale(.9)}65%{transform:translateY(-4px) scale(1.08)}100%{transform:translateY(-3px) scale(1.045)}}
   @media(prefers-reduced-motion:reduce){.certification-icon,.certification-icon svg{transition:none}.certification-card:hover .certification-icon,.certification-card:focus-visible .certification-icon,.certification-card:hover .certification-icon svg,.certification-card:focus-visible .certification-icon svg{transform:none;box-shadow:none}}.certification-card h3{margin:1px 0 6px;font:700 17px/1.35 Manrope;color:var(--ink)}.certification-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.certification-card:nth-child(1){--course-accent:#087b68}.certification-card:nth-child(2){--course-accent:#526f8f}.certification-card:nth-child(3){--course-accent:#82566f}.certification-card:nth-child(4){--course-accent:#a65b68}.certification-card:nth-child(5){--course-accent:#7b5e87}.certification-card:nth-child(6){--course-accent:#9a7819}html[data-theme="dark"] .certifications-platforms{color:#74d2bb}
 
 /* Seamless learning statement marquee. Inherits the existing copy typography and color. */
@@ -1370,6 +1378,25 @@ document.querySelectorAll('.expertise-card').forEach(card=>{
   },{passive:true});
 });
 
+// Mobile touch interactions: keep Skill Set dots and certification icons active while scrolling.
+document.querySelectorAll('.skills-cloud span').forEach(skill=>{
+  skill.addEventListener('pointerdown',event=>{
+    if(event.pointerType==='mouse')return;
+    document.querySelectorAll('.skills-cloud span.is-touch-active').forEach(active=>{if(active!==skill)active.classList.remove('is-touch-active')});
+    skill.classList.remove('is-touch-active');
+    void skill.offsetWidth;
+    skill.classList.add('is-touch-active');
+  },{passive:true});
+});
+document.querySelectorAll('.certification-card').forEach(card=>{
+  card.addEventListener('pointerdown',event=>{
+    if(event.pointerType==='mouse')return;
+    document.querySelectorAll('.certification-card.is-touch-active').forEach(active=>{if(active!==card)active.classList.remove('is-touch-active')});
+    card.classList.remove('is-touch-active');
+    void card.offsetWidth;
+    card.classList.add('is-touch-active');
+  },{passive:true});
+});
 // Toolkit code editor: reveal once, then cycle a restrained teal highlight.
 const codeEditor=document.querySelector('.code-editor-card');
 if(codeEditor){
