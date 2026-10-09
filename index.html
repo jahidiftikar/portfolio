@@ -1153,6 +1153,37 @@ html[data-theme="dark"] #impact .achievement:nth-child(3) .achievement-accent{co
   .menu-toggle-line{transition:none}
   .menu-toggle:not(.is-open) .menu-toggle-lines{animation:none}
 }
+/* Show the email contact button border only during interaction in dark mode. */
+html[data-theme="dark"] #contact .contact-actions .bright{
+  border-color:transparent;
+}
+html[data-theme="dark"] #contact .contact-actions .bright:hover,
+html[data-theme="dark"] #contact .contact-actions .bright:focus-visible,
+html[data-theme="dark"] #contact .contact-actions .bright:active{
+  border-width:1px;
+  border-style:solid;
+  border-color:#087b68;
+}
+/* Dark-mode navigation hover/focus: use the final emerald palette instead of the older blue state. */
+html[data-theme="dark"] .site-nav a:not(.nav-cta):hover,
+html[data-theme="dark"] .site-nav a:not(.nav-cta):focus-visible,
+html[data-theme="dark"] .site-nav a:not(.nav-cta):active{
+  color:#74d2bb;
+  background:transparent;
+  border-bottom-color:#51c9ad;
+}
+@media(max-width:600px){
+  html[data-theme="dark"] .site-nav a:not(.nav-cta):hover,
+  html[data-theme="dark"] .site-nav a:not(.nav-cta):focus-visible,
+  html[data-theme="dark"] .site-nav a:not(.nav-cta):active{
+    border-bottom-color:transparent;
+  }
+}
+/* Ensure the hero role text switches to a readable color in dark mode on desktop and mobile. */
+html[data-theme="dark"] .hero .eyebrow,
+html[data-theme="dark"] .hero .role-mask{
+  color:#edf5f2;
+}
 </style>
 </head>
 <body id="top">
