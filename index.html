@@ -1184,9 +1184,38 @@ html[data-theme="dark"] .hero .eyebrow,
 html[data-theme="dark"] .hero .role-mask{
   color:#edf5f2;
 }
-</style>
+
+  /* Premium opening loader: reference-inspired, adapted to the emerald portfolio palette. */
+  .page-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:#F3F6F7;color:#087b68;opacity:1;visibility:visible;isolation:isolate;transform:none;transition:opacity .68s cubic-bezier(.4,0,.2,1),visibility .68s step-end;will-change:opacity}
+  .page-loader::before{content:"";position:absolute;z-index:-2;inset:0;background:radial-gradient(circle at 50% 46%,rgba(8,123,104,.055),transparent 34%)}
+  .page-loader::after{display:none}
+  .page-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;transform:none}
+  .page-loader-content{position:relative;display:grid;justify-items:center;gap:20px;transform:translateY(-1vh)}
+  .loader-bars{display:flex;align-items:flex-end;justify-content:center;gap:7px;height:34px}
+  .loader-bar{display:block;width:5px;height:27px;border-radius:99px;background:#087b68;box-shadow:0 5px 14px rgba(8,123,104,.12);transform-origin:center;animation:loaderBars 1.25s cubic-bezier(.45,.05,.55,.95) infinite}
+  .loader-bar:nth-child(1){animation-delay:0s}.loader-bar:nth-child(2){animation-delay:-.625s}.loader-bar:nth-child(3){animation-delay:0s}
+  .loader-copy{position:relative;margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;line-height:1.2;letter-spacing:1.5px;color:#087b68;text-shadow:none;white-space:nowrap;font-synthesis:none;transform:none;text-align:center}.loader-dots{position:absolute;left:100%;top:0;display:block;width:1.8em;text-align:left;letter-spacing:1px;font:inherit}
+  body.loader-active{overflow:hidden}
+  body.loader-active>header,body.loader-active>main,body.loader-active>footer,body.loader-active>.scroll-progress,body.loader-active>.cursor-glow{opacity:0;transform:translateY(10px)}
+  body>header,body>main,body>footer,body>.scroll-progress,body>.cursor-glow{opacity:1;transform:translateY(0);transition:opacity .78s cubic-bezier(.22,1,.36,1),transform .78s cubic-bezier(.22,1,.36,1)}
+  @keyframes loaderBars{0%,100%{transform:translateY(7px) scaleY(.48);opacity:.58}25%{transform:translateY(0) scaleY(1);opacity:1}50%{transform:translateY(-7px) scaleY(.62);opacity:.72}75%{transform:translateY(0) scaleY(1);opacity:1}}
+  @keyframes loaderSheen{0%,18%{transform:translateX(-42%) rotate(-4deg);opacity:0}30%{opacity:1}68%{opacity:.8}82%,100%{transform:translateX(42%) rotate(-4deg);opacity:0}}
+  
+  @keyframes loaderAura{from{transform:translate3d(-1.5%,-1%,0) scale(1)}to{transform:translate3d(1.5%,1%,0) scale(1.06)}}
+  @media(max-width:600px){.page-loader-content{gap:17px}.loader-bars{height:30px;gap:6px}.loader-bar{width:4px;height:24px}.loader-copy{font-size:13px;letter-spacing:1.2px}}
+  @media(prefers-reduced-motion:reduce){.page-loader,.page-loader::before,.loader-bar,.loader-copy{animation:none!important}.page-loader{transition:opacity .2s ease,visibility .2s step-end}}
+
+  </style>
 </head>
-<body id="top">
+<body id="top" class="loader-active">
+
+  <div class="page-loader" id="page-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="page-loader-content">
+      <div class="loader-bars" aria-hidden="true"><span class="loader-bar"></span><span class="loader-bar"></span><span class="loader-bar"></span></div>
+      <p class="loader-copy">Loading Excellence<span class="loader-dots" aria-hidden="true">.</span></p>
+    </div>
+  </div>
+
 <div class="scroll-progress" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
 
@@ -1282,6 +1311,33 @@ html[data-theme="dark"] .hero .role-mask{
 <section id="contact" class="contact-section"><div class="section-shell contact-inner reveal"><div class="contact-layout"><div class="contact-intro"><p class="kicker">Let’s connect</p><h2>Need complex information made clear?</h2><div class="contact-actions"><a class="button bright" href="mailto:jahid.iftikar@gmail.com">jahid.iftikar@gmail.com ↗</a><a class="contact-icon-link linkedin-button" href="https://www.linkedin.com/in/jahidiftikar/" target="_blank" rel="noopener noreferrer" aria-label="View Jahid Iftikar on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.32 7.41a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.04H3.54V8.98H7.1v11.47z"/></svg></a><a class="text-link phone-link" href="tel:+919910475660"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg><span>+91 9910475660</span></a></div></div><div class="contact-form-card"><form class="contact-form" id="contact-form"><div class="contact-form-row"><div class="contact-field"><label for="contact-name">Name</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div><div class="contact-field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div></div><div class="contact-field"><label for="contact-subject">Subject</label><input id="contact-subject" name="subject" type="text" placeholder="Documentation opportunity" required></div><div class="contact-field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" placeholder="Tell me about the challenge..." required></textarea></div><div class="contact-form-footer"><button class="compose-email" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg><span>Compose email</span></button><p class="form-note">This opens your default email application. No data is stored.</p></div></form></div></div></div></section></main>
 <footer class="footer section-shell"><p>Jahid Iftikar · Technical Writer | Instructional Designer</p><a class="back-to-top" href="#top" aria-label="Back to top">Back to top ↑</a></footer>
 <script>
+// Premium opening loader.
+const pageLoader=document.getElementById('page-loader');
+const loaderStarted=performance.now();
+const reducedLoaderMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const minimumLoaderTime=reducedLoaderMotion?250:1650;
+const loaderDots=document.querySelector('.loader-dots');
+let loaderDotStep=1;
+let loaderDotTimer=null;
+document.body.classList.add('loader-active');
+if(loaderDots&&!reducedLoaderMotion){
+  loaderDotTimer=setInterval(()=>{
+    loaderDotStep=loaderDotStep%3+1;
+    loaderDots.textContent='.'.repeat(loaderDotStep);
+  },360);
+}
+function dismissPageLoader(){
+  if(!pageLoader)return;
+  const remaining=Math.max(0,minimumLoaderTime-(performance.now()-loaderStarted));
+  setTimeout(()=>{
+    if(loaderDotTimer)clearInterval(loaderDotTimer);
+    pageLoader.classList.add('is-hidden');
+    requestAnimationFrame(()=>document.body.classList.remove('loader-active'));
+    pageLoader.addEventListener('transitionend',()=>pageLoader.remove(),{once:true});
+  },remaining);
+}
+if(document.readyState==='complete')dismissPageLoader();
+else window.addEventListener('load',dismissPageLoader,{once:true});
 const themeToggle=document.getElementById('theme-toggle');
 const themeLabel=document.getElementById('theme-label');
 function syncThemeControl(){
