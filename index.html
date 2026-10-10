@@ -1263,6 +1263,53 @@ html[data-theme="dark"] .hero .role-mask{
   .menu-toggle-line:nth-child(3){top:15px}
   .menu-toggle.is-open .menu-toggle-line:nth-child(1),
   .menu-toggle.is-open .menu-toggle-line:nth-child(3){top:8px}
+
+/* Mobile theme-toggle refinement: remove native tap flash and keep touch motion smooth. */
+@media (max-width:1024px), (pointer:coarse){
+  .theme-toggle{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;touch-action:manipulation;user-select:none;-webkit-user-select:none;outline:none;transition:background-color .28s ease,border-color .28s ease,box-shadow .28s ease,transform .18s cubic-bezier(.22,1,.36,1);will-change:transform}
+  .theme-toggle:hover{transform:none}
+  .theme-toggle:active{transform:scale(.96)}
+  .theme-toggle:focus:not(:focus-visible){outline:none;box-shadow:none}
+  .theme-thumb{will-change:transform;backface-visibility:hidden;transform:translateZ(0);transition:transform .32s cubic-bezier(.22,1,.36,1),background-color .28s ease}
+  html[data-theme="dark"] .theme-thumb{transform:translate3d(22px,0,0)}
+}
+/* Theme-toggle icon sizing and optical centering only. */
+.theme-icon{
+  width:23px;
+  height:23px;
+  font-size:16px;
+  text-align:center;
+}
+.theme-icon.sun{left:2px}
+.theme-icon.moon{right:2px}
+  /* Horizontally center the emerald theme thumb in each toggle half. */
+  .theme-thumb{
+    left:0;
+    top:50%;
+    transform:translate3d(0,-50%,0);
+  }
+  html[data-theme="dark"] .theme-thumb{
+    transform:translate3d(23px,-50%,0);
+  }
+  @media (max-width:1024px), (pointer:coarse){
+    .theme-thumb{transform:translate3d(0,-50%,0)}
+    html[data-theme="dark"] .theme-thumb{transform:translate3d(23px,-50%,0)}
+  }
+  /* Subtle premium tilt for the moon symbol only. */
+  .theme-icon.moon{transform:translateY(-50%) rotate(-35deg)}
+    /* Two restrained sparkle plus signs around the moon. */
+    .theme-icon.moon::before,
+    .theme-icon.moon::after{
+      content:"+";
+      position:absolute;
+      font:700 7px/1 Arial,sans-serif;
+      color:currentColor;
+      opacity:.82;
+      transform:rotate(35deg);
+      pointer-events:none;
+    }
+    .theme-icon.moon::before{top:7px;right:6px}
+    .theme-icon.moon::after{top:11px;right:7px;font-size:6px;opacity:.62}
 </style>
 </head>
 <body id="top" class="loader-active">
@@ -1417,6 +1464,12 @@ themeToggle.addEventListener('click',()=>{
   syncThemeControl();
 });
 syncThemeControl();
+
+// Prevent mobile browsers from retaining a highlighted/focused toggle after a tap.
+themeToggle.addEventListener('pointerup',event=>{
+  if(event.pointerType==='mouse')return;
+  requestAnimationFrame(()=>themeToggle.blur());
+});
 
 const experienceCount=document.getElementById('experience-count');
 if(experienceCount){
