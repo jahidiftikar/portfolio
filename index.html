@@ -1185,10 +1185,17 @@ html[data-theme="dark"] .hero .role-mask{
   color:#edf5f2;
 }
 
+  /* Keep the desktop viewport width stable while the loader locks page scrolling. */
+  html{scrollbar-gutter:stable;}
+
   /* Premium opening loader: reference-inspired, adapted to the emerald portfolio palette. */
   .page-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:#F3F6F7;color:#087b68;opacity:1;visibility:visible;isolation:isolate;transform:none;transition:opacity .68s cubic-bezier(.4,0,.2,1),visibility .68s step-end;will-change:opacity}
   .page-loader::before{content:"";position:absolute;z-index:-2;inset:0;background:radial-gradient(circle at 50% 46%,rgba(8,123,104,.055),transparent 34%)}
   .page-loader::after{display:none}
+  html[data-theme="dark"] .page-loader{background:#0c1513;color:#74d2bb}
+  html[data-theme="dark"] .page-loader::before{background:radial-gradient(circle at 50% 46%,rgba(81,201,173,.07),transparent 34%)}
+  html[data-theme="dark"] .loader-bar{background:#51c9ad;box-shadow:0 5px 14px rgba(81,201,173,.12)}
+  html[data-theme="dark"] .loader-copy{color:#74d2bb}
   .page-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none;transform:none}
   .page-loader-content{position:relative;display:grid;justify-items:center;gap:20px;transform:translateY(-1vh)}
   .loader-bars{display:flex;align-items:flex-end;justify-content:center;gap:7px;height:34px}
@@ -1196,8 +1203,8 @@ html[data-theme="dark"] .hero .role-mask{
   .loader-bar:nth-child(1){animation-delay:0s}.loader-bar:nth-child(2){animation-delay:-.625s}.loader-bar:nth-child(3){animation-delay:0s}
   .loader-copy{position:relative;margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;line-height:1.2;letter-spacing:1.5px;color:#087b68;text-shadow:none;white-space:nowrap;font-synthesis:none;transform:none;text-align:center}.loader-dots{position:absolute;left:100%;top:0;display:block;width:1.8em;text-align:left;letter-spacing:1px;font:inherit}
   body.loader-active{overflow:hidden}
-  body.loader-active>header,body.loader-active>main,body.loader-active>footer,body.loader-active>.scroll-progress,body.loader-active>.cursor-glow{opacity:0;transform:translateY(10px)}
-  body>header,body>main,body>footer,body>.scroll-progress,body>.cursor-glow{opacity:1;transform:translateY(0);transition:opacity .78s cubic-bezier(.22,1,.36,1),transform .78s cubic-bezier(.22,1,.36,1)}
+  body.loader-active>header,body.loader-active>main,body.loader-active>footer,body.loader-active>.scroll-progress,body.loader-active>.cursor-glow{opacity:0;transform:none}
+  body>header,body>main,body>footer,body>.scroll-progress,body>.cursor-glow{opacity:1;transform:none;transition:opacity .72s cubic-bezier(.22,1,.36,1)}
   @keyframes loaderBars{0%,100%{transform:translateY(7px) scaleY(.48);opacity:.58}25%{transform:translateY(0) scaleY(1);opacity:1}50%{transform:translateY(-7px) scaleY(.62);opacity:.72}75%{transform:translateY(0) scaleY(1);opacity:1}}
   @keyframes loaderSheen{0%,18%{transform:translateX(-42%) rotate(-4deg);opacity:0}30%{opacity:1}68%{opacity:.8}82%,100%{transform:translateX(42%) rotate(-4deg);opacity:0}}
   
