@@ -1212,6 +1212,17 @@ html[data-theme="dark"] .hero .role-mask{
   @media(max-width:600px){.page-loader-content{gap:17px}.loader-bars{height:30px;gap:6px}.loader-bar{width:4px;height:24px}.loader-copy{font-size:13px;letter-spacing:1.2px}}
   @media(prefers-reduced-motion:reduce){.page-loader,.page-loader::before,.loader-bar,.loader-copy{animation:none!important}.page-loader{transition:opacity .2s ease,visibility .2s step-end}}
 
+  /* Dark-mode contact form fields: mirror the light-mode hover and focus behavior. */
+  html[data-theme="dark"] #contact .contact-field input:hover,
+  html[data-theme="dark"] #contact .contact-field textarea:hover{
+    border-color:rgba(81,201,173,.34);
+  }
+  html[data-theme="dark"] #contact .contact-field input:focus,
+  html[data-theme="dark"] #contact .contact-field textarea:focus{
+    border-color:#51c9ad;
+    background:#15241f;
+    box-shadow:0 0 0 4px rgba(81,201,173,.12);
+  }
   </style>
 </head>
 <body id="top" class="loader-active">
