@@ -1223,7 +1223,47 @@ html[data-theme="dark"] .hero .role-mask{
     background:#15241f;
     box-shadow:0 0 0 4px rgba(81,201,173,.12);
   }
-  </style>
+
+  /* Desktop resize stability: prevent Profile cards from being squeezed when the
+     browser crosses into the compact navigation layout. Mobile rules remain unchanged. */
+  @media (min-width:701px) and (max-width:1024px){
+    #about .about-grid{grid-template-columns:1fr;gap:32px}
+    #about .large-copy{width:100%;max-width:none}
+    #about .capability-cards{grid-template-columns:repeat(3,minmax(0,1fr));width:100%;min-width:0}
+    #about .capability-cards article.capability-flip-card{min-width:0}
+    #about .capability-card-face{min-width:0;overflow:hidden}
+    #about .capability-card-face h3,
+    #about .capability-card-back p{overflow-wrap:anywhere}
+  }
+
+  /* Keep all three hamburger strokes optically identical at compact desktop widths. */
+  .menu-toggle-line{
+    height:2px;
+    min-height:2px;
+    max-height:2px;
+    border-radius:2px;
+  }
+  
+  /* Final pixel-aligned hamburger graphics: identical stroke weight on every line. */
+  .menu-toggle-lines{width:26px;height:19px}
+  .menu-toggle-line{
+    left:0;
+    width:26px;
+    height:3px;
+    min-height:3px;
+    max-height:3px;
+    border-radius:3px;
+    background:currentColor;
+    box-shadow:none;
+    transform:translateZ(0);
+    backface-visibility:hidden;
+  }
+  .menu-toggle-line:nth-child(1){top:1px}
+  .menu-toggle-line:nth-child(2){top:8px}
+  .menu-toggle-line:nth-child(3){top:15px}
+  .menu-toggle.is-open .menu-toggle-line:nth-child(1),
+  .menu-toggle.is-open .menu-toggle-line:nth-child(3){top:8px}
+</style>
 </head>
 <body id="top" class="loader-active">
 
