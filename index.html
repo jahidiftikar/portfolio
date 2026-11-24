@@ -3576,6 +3576,32 @@ html[data-theme="dark"] #home .hero-portrait-card{
   }
 }
 </style>
+
+<style id="mobile-touch-highlight-fix">
+/* Remove the browser's blue tap flash on touch devices while preserving keyboard focus styles. */
+@media (hover:none) and (pointer:coarse){
+  .site-nav a,
+  .nav-dropdown-toggle,
+  .back-to-top,
+  .contact-actions a,
+  .contact-actions button,
+  .case-tab,
+  .case-tab-link{
+    -webkit-tap-highlight-color:transparent;
+    tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+
+  /* Prevent sticky mobile :hover styling after a tap. Active/current states remain unchanged. */
+  .site-nav > a:hover:not(.is-active):not(.nav-cta),
+  .nav-dropdown-toggle:hover,
+  .back-to-top:hover,
+  .contact-actions a:hover,
+  .contact-actions button:hover{
+    -webkit-tap-highlight-color:transparent;
+  }
+}
+</style>
 </head>
 <body class="loader-active" id="top">
 <div aria-label="Loading portfolio" aria-live="polite" class="page-loader" id="page-loader" role="status">
